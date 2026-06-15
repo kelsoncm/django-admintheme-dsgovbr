@@ -57,7 +57,7 @@ class OrgaoAdmin(DSGovBrModelAdmin):
 
     # Coluna customizada na listagem para facilitar navegação
     def acoes_customizadas(self, obj):
-        url = reverse(f"admin:demo_orgao_historico", args=[obj.pk])
+        url = reverse(f"admin:cadastro_orgao_historico", args=[obj.pk])
         return format_html('<a class="button" href="{}"><i class="fas fa-history"></i> Auditoria</a>', url)
     acoes_customizadas.short_description = "Ações"
 
@@ -117,7 +117,7 @@ class ServidorAdmin(DSGovBrModelAdmin):
         servidor = self.get_object(request, object_id)
         messages.success(request, f"E-mail de boas-vindas enviado com sucesso para {servidor.email}!")
         # Redireciona de volta para a view de preview/visualização do servidor
-        return redirect(reverse('admin:demo_servidor_preview', args=[object_id]))
+        return redirect(reverse('admin:cadastro_servidor_preview', args=[object_id]))
 
 
 @admin.register(Servico)

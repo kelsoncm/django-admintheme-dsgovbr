@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+
+{% block title %}Dashboard do Sandbox - DSGovBR{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="br-card">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-cubes fa-2x text-primary mr-3"></i>
+          <div>
+            <h2 class="m-0">Área de Validação do Sandbox</h2>
+            <p class="m-0 text-muted">Utilize os atalhos abaixo para testar o comportamento visual e de permissões do tema.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="row mt-4">
+          {% for app in apps %}
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="br-card hover-shadow" style="height: 100%; border: 1px solid #ccc; border-radius: 4px; padding: 16px;">
+                <div class="card-title">
+                  <h4 class="text-primary"><a href="{{ app.url }}">{{ app.name }}</a></h4>
+                </div>
+                <div class="card-body">
+                  <p>{{ app.desc }}</p>
+                </div>
+                <div class="card-footer text-right">
+                  <a href="{{ app.url }}" class="br-button primary small">Acessar</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

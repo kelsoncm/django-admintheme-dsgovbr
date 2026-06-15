@@ -60,9 +60,8 @@ class ES6BundlerFilter(FilterBase):
                     line = re.sub(r'^export\s+default\s+', '', line)
                 elif stripped.startswith('export '):
                     # Replace "export class BRUpload" with "class BRUpload"
-                    if stripped.startswith('export {'):
-                        continue
-                    line = re.sub(r'^export\s+', '', line)
+                    if not stripped.startswith('export {'):
+                        line = re.sub(r'^export\s+', '', line)
                 
                 clean_lines.append(line)
 

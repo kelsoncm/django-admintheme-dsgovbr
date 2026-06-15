@@ -4,6 +4,11 @@ from django.http import HttpRequest
 
 
 def layout_settings(request: HttpRequest) -> dict:
+    from django.contrib import admin
+    user = getattr(request, "user", None)
+    is_staff = user and user.is_authenticated and user.is_staff
+    available_apps = admin.site.get_app_list(request) if is_staff else []
+
     return {
         "project_company": getattr(settings, "PROJECT_COMPANY", "PROJECT_COMPANY"),
         "project_title": getattr(settings, "PROJECT_TITLE", "PROJECT_TITLE"),
@@ -17,6 +22,7 @@ def layout_settings(request: HttpRequest) -> dict:
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
         "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
         "have_header_menu_trigger": True,
+        "available_apps": available_apps,
         "fast_access_links": getattr(
             settings,
             "APP_FAST_ACCESS_LINKS", 
@@ -32,3 +38,4 @@ def layout_settings(request: HttpRequest) -> dict:
             ]
         ),
     }
+

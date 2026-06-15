@@ -40,8 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-    'demo',
+    'core',
+    'accounts',
+    'cadastro',
+    'public_forms',
+    'editorial',
+    'atendimento',
+    'eventos',
+    'media_library',
+    'ui_showcase',
+    'qa_orchestrator',
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -151,5 +162,11 @@ HOSTNAME = "sandbox-local"
 # Configurações de Mídia
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Redirecionamentos de Autenticação
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 

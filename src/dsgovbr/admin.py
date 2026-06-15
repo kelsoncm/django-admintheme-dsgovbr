@@ -1,4 +1,5 @@
 from django.utils.translation import gettext as _
+from collections.abc import Callable, Generator
 from django.http import HttpRequest, HttpResponse
 from dataclasses import dataclass
 from django.conf import settings
@@ -25,8 +26,8 @@ class ActionSpec:
     icon: str = ""
     css_class: str = ""
     permission: str | None = None
-    authorize: callable | None = None
-    admin: callable | None = None
+    authorize: Callable | None = None
+    admin: Callable | None = None
 
     def is_allowed(self, admin: ModelAdmin, request: HttpRequest) -> bool:
         return (self.permission and request.user.has_perm(self.permission)) or (
@@ -341,7 +342,7 @@ class DSGovBrBaseModelAdmin(ModelAdmin):
     def is_valid_handler(self, a: ActionSpec) -> bool:
         return hasattr(self, a.handler) and callable(getattr(self, a.handler))
 
-    def get_handler(self, spec: ActionSpec) -> callable | None:
+    def get_handler(self, spec: ActionSpec) -> Callable | None:
         return (
             getattr(self, spec.handler)
             if hasattr(self, spec.handler) and callable(getattr(self, spec.handler))

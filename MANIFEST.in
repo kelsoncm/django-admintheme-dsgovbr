@@ -4,7 +4,6 @@ include PUBLISHING.md
 include .gitlab-ci.yml
 include .github/workflows/*.yml
 include pyproject.toml
-include setup.py
 include .vscode/settings.json
 recursive-include src/dsgovbr/static *
 recursive-include src/dsgovbr/templates *

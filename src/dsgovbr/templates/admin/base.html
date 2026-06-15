@@ -1,4 +1,4 @@
-{% load i18n static dsgovbr %}
+{% load i18n static dsgovbr compress %}
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
   <!-- Design System de Governo-->
-  <link rel="stylesheet" href="{% static 'vendors/serpro/core.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'dsgovbr/css/dsgovbr.css' %}" />
+  {% compress css %}
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'vendors/serpro/core.scss' %}" />
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'dsgovbr/scss/dsgovbr.scss' %}" />
+  {% endcompress %}
 
   {% include 'dsgovbr/favicon.html' %}
 
@@ -218,7 +220,8 @@
             </div><!-- #main-navigation -->
 
             <div class="col mb-5">
-              <nav class="br-breadcrumb">
+              <div class="{% block content_container_class %}container-fluid{% endblock %}">
+                <nav class="br-breadcrumb">
                 <ol class="crumb-list" role="list">
                   <li class="crumb home"><a class="br-button circle" href="/"><span class="sr-only">Página inicial</span><i class="fas fa-home"></i></a></li>
                   {% block breadcrumb %}
@@ -278,6 +281,7 @@
                 <!-- END Content -->
               </div>
             </div>
+            </div>
           </div>
         </div>
       </main>
@@ -306,7 +310,11 @@
 
   </div>
 
-  <script src="{% static 'vendors/serpro/core-init.min.js' %}"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  {% compress js %}
+  <script type="text/javascript" src="{% static 'vendors/serpro/partial/js/core-init.js' %}"></script>
+  {% endcompress %}
   {% block extrabody %}{% endblock extrabody %}
 </body>
 

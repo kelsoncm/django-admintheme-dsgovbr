@@ -41,7 +41,7 @@ Opcionalmente, adicione "Required reviewers" para o environment `pypi` para exig
 
 A forma recomendada é criar uma release no GitHub:
 
-1. Atualize a versão no arquivo `pyproject.toml` e `setup.py`
+1. Atualize a versão no arquivo `pyproject.toml`
 2. Commit e push das mudanças
 3. Crie uma tag de versão:
    ```bash
@@ -96,7 +96,6 @@ Use [Semantic Versioning](https://semver.org/):
 ## Checklist Antes de Publicar
 
 - [ ] Atualizar versão em `pyproject.toml`
-- [ ] Atualizar versão em `setup.py`
 - [ ] Atualizar CHANGELOG.md (se existir)
 - [ ] Testar localmente: `python -m build`
 - [ ] Verificar o pacote: `twine check dist/*`
@@ -117,7 +116,6 @@ django_dsgovbr/
 │   └── dsgovbr/                  # Código do pacote
 ├── MANIFEST.in                   # Arquivos a incluir no pacote
 ├── pyproject.toml                # Configuração moderna do pacote
-├── setup.py                      # Setup tradicional (compatibilidade)
 ├── README.md                     # Documentação
 └── PUBLISHING.md                 # Este arquivo
 ```

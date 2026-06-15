@@ -109,3 +109,13 @@ venv.bak/
 confs/enabled/
 volumes/
 src/integrador/example/carga.json
+
+# DSGovBR compiled/minified build outputs
+src/dsgovbr/static/vendors/serpro/*.min.css
+src/dsgovbr/static/vendors/serpro/*.min.css.map
+src/dsgovbr/static/vendors/serpro/*.css.map
+src/dsgovbr/static/vendors/serpro/*.js.map
+src/dsgovbr/static/vendors/serpro/*.min.js
+src/dsgovbr/static/vendors/serpro/*.min.js.map
+src/dsgovbr/static/dsgovbr/css/dsgovbr.css
+src/dsgovbr/static/dsgovbr/css/dsgovbr_login.css

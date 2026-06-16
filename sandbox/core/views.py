@@ -1,12 +1,21 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomeView(TemplateView):
     template_name = "core/home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "DSGovBR Django Theme Sandbox"
+        context['title'] = "Instruções do Sandbox - DSGovBR"
+        return context
+
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = "core/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Dashboard do Sandbox - DSGovBR"
         context['apps'] = [
             {'name': 'Cadastro Institucional (Admin)', 'url': '/admin/cadastro/', 'desc': 'Validação de listagem, inlines, autocomplete, filtros, etc.'},
             {'name': 'Editorial (Admin)', 'url': '/admin/editorial/', 'desc': 'Validação de Many-to-Many, pre-populated slugs, tabular inlines.'},
@@ -18,3 +27,4 @@ class HomeView(TemplateView):
             {'name': 'QA Orchestrator (Painel de Teste)', 'url': '/qa/', 'desc': 'Utilitários para simular perfis de acesso, resetar dados e massas.'},
         ]
         return context
+

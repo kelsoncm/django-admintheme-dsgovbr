@@ -27,7 +27,7 @@ Suba o servidor de desenvolvimento local do Django:
 ```bash
 uv run python manage.py runserver
 ```
-Acesse a aplicação no navegador em: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+Acesse as instruções públicas da sandbox em [http://127.0.0.1:8000/](http://127.0.0.1:8000/) e o Dashboard de validação em [http://127.0.0.1:8000/dashboard/](http://127.0.0.1:8000/dashboard/) (requer login).
 
 ---
 
@@ -55,7 +55,7 @@ Todos os usuários de testes são criados com a senha padrão: **`Senha123!`**
 
 A sandbox é segmentada em mini-aplicações focadas em diferentes aspectos do Django:
 
-*   **`core`**: Página inicial do dashboard, base templates unificados, navegação (drawer menu) e carregamento inicial dos recursos estáticos e do compressor de arquivos.
+*   **`core`**: Página inicial de instruções públicas (`/`), painel de módulos autenticado (`/dashboard/`), base templates unificados, navegação (drawer menu) e carregamento inicial dos recursos estáticos e do compressor de arquivos.
 *   **`accounts`**: Customização do modelo de usuário (`CustomUser`) e integração dos templates nativos de autenticação (`registration/`) do Django no tema DSGovBR (login, logout, alteração e reset de senha).
 *   **`cadastro`**: Validação de inlines avançados, buscas com autocomplete e filtros do Django Admin.
 *   **`editorial`**: Validação de relacionamentos Many-to-Many complexos, geração de slugs automáticos e tabelas com inlines tabulares.

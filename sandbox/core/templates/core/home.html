@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 
-{% block title %}Dashboard do Sandbox - DSGovBR{% endblock %}
+{% block title %}Instruções do Sandbox - DSGovBR{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -9,7 +9,7 @@
     <div class="br-card">
       <div class="card-header">
         <div class="d-flex align-items-center">
-          <i class="fas fa-cubes fa-2x text-primary mr-3"></i>
+          <i class="fas fa-info-circle fa-2x text-primary mr-3"></i>
           <div>
             <h2 class="m-0">Ambiente de Validação & Homologação</h2>
             <p class="m-0 text-muted">Validação visual e funcional do tema <strong>DSGovBR</strong> para Django 5.2 LTS e 6.0.</p>
@@ -20,6 +20,9 @@
         <p class="mt-3">
           Esta aplicação de referência (sandbox) foi projetada para testar o comportamento visual e estrutural do tema baseado no <strong>Design System do Governo Federal (dsgovbr)</strong>. Ela cobre as superfícies críticas do Django que costumam apresentar quebras em temas customizados: o painel administrativo (<code>django.contrib.admin</code>), fluxos nativos de autenticação (<code>django.contrib.auth</code>) e a renderização de formulários públicos (<code>django.forms</code>).
         </p>
+        <div class="mt-4 text-center">
+          <a href="{% url 'core:dashboard' %}" class="br-button primary large"><i class="fas fa-cubes mr-2"></i> Acessar o Dashboard de Testes</a>
+        </div>
       </div>
     </div>
   </div>
@@ -122,27 +125,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Módulos de Testes Disponíveis -->
-  <div class="col-sm-12">
-    <h3 class="mb-3 text-primary"><i class="fas fa-vial mr-2"></i> Módulos de Testes Funcionais</h3>
-    <div class="row">
-      {% for app in apps %}
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="sandbox-app-card">
-            <div class="card-title">
-              <h4 class="text-primary m-0"><a href="{{ app.url }}">{{ app.name }}</a></h4>
-            </div>
-            <div class="card-body my-3">
-              <p class="text-muted">{{ app.desc }}</p>
-            </div>
-            <div class="card-footer text-right">
-              <a href="{{ app.url }}" class="br-button primary small">Acessar Módulo</a>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
 </div>
 {% endblock %}
+

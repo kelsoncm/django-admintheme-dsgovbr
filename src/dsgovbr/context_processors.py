@@ -1,59 +1,92 @@
 from django.conf import settings
-from django.utils.translation import gettext as _
 from django.http import HttpRequest
+from django.urls import reverse
+
+
+def _get_element_as_list(dictionary: dict, name: str) -> list:
+    setting = dictionary.get(name, [])
+    return setting if isinstance(setting, list) else []
 
 
 def layout_settings(request: HttpRequest) -> dict:
-    from django.contrib import admin
-    user = getattr(request, "user", None)
-    is_staff = user and user.is_authenticated and user.is_staff
-    available_apps = admin.site.get_app_list(request) if is_staff else []
+    header_settings = getattr(settings, "DSGOVBR_HEADER", {})
 
-    fast_access_links = getattr(
-        settings,
-        "APP_FAST_ACCESS_LINKS", 
-        [{'url': '/', 'label': 'Home'}]
-    )
-    if not isinstance(fast_access_links, list):
-        fast_access_links = []
-
-    feature_links = getattr(
-        settings,
-        "APP_FEATURE_LINKS", 
-        [{'icon': 'fas fa-adjust', 'label': 'Funcionalidade 1'}]
-    )
-    if not isinstance(feature_links, list):
-        feature_links = []
+    project_company = getattr(settings, "PROJECT_COMPANY", "Your company")
+    project_title = getattr(settings, "PROJECT_TITLE", "Nome do projeto")
+    project_subtitle = getattr(settings, "PROJECT_SUBTITLE", "Slogan do projeto")
 
     return {
-        "project_company": getattr(settings, "PROJECT_COMPANY", "PROJECT_COMPANY"),
-        "project_title": getattr(settings, "PROJECT_TITLE", "PROJECT_TITLE"),
-        "project_subtitle": getattr(settings, "PROJECT_SUBTITLE", "PROJECT_SUBTITLE"),
-        "project_version": getattr(settings, "PROJECT_VERSION", "PROJECT_VERSION"),
+        "project_company": project_company,
+        "project_title": project_title,
+        "project_subtitle": project_subtitle,
+        "project_version": getattr(settings, "PROJECT_VERSION", "v1.0.0"),
         "project_last_startup": getattr(settings, "PROJECT_LAST_STARTUP", "PROJECT_LAST_STARTUP"),
         "project_copyright": getattr(settings, "PROJECT_COPYRIGHT", "@2025 PROJECT_COPYRIGHT"),
         "project_license": getattr(settings, "PROJECT_LICENSE", "Licença MIT"),
         "project_license_url": getattr(settings, "PROJECT_LICENSE_URL", "https://opensource.org/license/mit"),
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
-
         "dsgovbr": {
             "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
             "header": {
                 **{
-                    "type": "compact",
-                    "logo_type": "compact",
-                    "show_logo": True,
-                    "show_signature": False,
-                    "show_title": True,
-                    "show_subtitle": False,
-                    "show_menu": True,
-                    "show_login": True,
-                    "show_search": False,
-                    "show_fast_access_links": bool(fast_access_links),
-                    "fast_access_links": fast_access_links,
-                    "show_feature_links": bool(feature_links),
-                    "feature_links": feature_links,
-                    "available_apps": available_apps,
+                    "type": "default",
+                    "width_style": "fluid",
+                    "logo": {
+                        "show": True,
+                        "type": "compact",
+                        "default_url": "https://www.gov.br/ds/assets/img/govbr-logo.png",
+                        "compact_url": "https://www.gov.br/ds/assets/img/govbr-logo.png",
+                        "link": "https://www.gov.br/pt-br",
+                    },
+                    "assinatura": {
+                        "show": False,
+                        "label": project_company,
+                    },
+                    "titulo": {
+                        "label": project_title,
+                    },
+                    "subtitulo": {
+                        "show": str(project_subtitle or "") != "",
+                        "label": project_subtitle,
+                    },
+                    "links": {
+                        "show": False,
+                        "items": [],
+                    },
+                    "funcionalidades": {
+                        "show": False,
+                        "items": [],
+                    },
+                    "login": {
+                        "show": True,
+                        "type": "default",
+                        "default_avatar_url": "",
+                        "saudacao": None,
+                        "name_to_show": "first",
+                        "dropdown": {
+                            "show": True,
+                            "show_large_avatar": True,
+                            "show_full_name": True,
+                            "show_role": True,
+                            "items": [
+                                {
+                                    "label": "Sair",
+                                    "url": reverse('logout'),
+                                    "target": "_blank",
+                                    "icon": "fas fa-sign-out-alt",
+                                },
+                            ],
+                        }
+                    },
+                    "menu": {
+                        "show": True,
+                    },
+                    "search": {
+                        "show": True,
+                    },
+                    "responsive_dropdown": {
+                        "show": True
+                    },
                 },
                 **getattr(settings, "DSGOVBR_HEADER", {})
             },

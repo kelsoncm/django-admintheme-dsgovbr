@@ -150,16 +150,6 @@ COMPRESS_ENABLED = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configurações do Tema DSGovBR
-PROJECT_TITLE = "DSGovBR Demo"
-PROJECT_SUBTITLE = "Painel de Teste & Desenvolvimento"
-PROJECT_COMPANY = "Governo Federal / Codelab"
-PROJECT_VERSION = "5.2.4"
-PROJECT_COPYRIGHT = "© 2026 DSGovBR"
-PROJECT_LICENSE = "Licença MIT"
-PROJECT_LICENSE_URL = "https://opensource.org/license/mit"
-HOSTNAME = "sandbox-local"
-
 # Configurações de Mídia
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -169,7 +159,70 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-LOGIN_ALTERNATIVE_METHODS = [
+
+DSGOVBR_HEADER = {
+    "links": {
+        "show": True,
+        "items": [
+            {
+                "label": "Action 1",
+                "url": "#id=1",
+            },
+            {
+                "label": "Action 2",
+                "url": "#id=2",
+                "target": "_blank",
+                "icon": "fas fa-location-arrow",
+                "external": True,
+            },
+        ]
+    },
+    "funcionalidades": {
+        "show": True,
+        "items": [
+            {
+                "label": "Avisos",
+                "icon": "fas fa-bell",
+                "url": "#id=1",
+            },
+            {
+                "label": "Mensagens",
+                "icon": "fas fa-comments",
+                "url": "#id=3",
+            },
+            {
+                "label": "Ajustes",
+                "icon": "fas fa-adjust",
+                "url": "#id=3",
+            },
+            {
+                "label": "Acessibilidade",
+                "icon": "fas fa-headset",
+                "url": "#id=1",
+            },
+        ]
+    },
+    # "login": {
+    #     "show": True,
+    #     "type": "fotografico",
+    #     "default_avatar_url": "",
+    #     "name_to_show": "first",
+    #     "dropdown": {
+    #         "show": True,
+    #         "items": [
+    #             {
+    #                 "label": "Sair",
+    #                 "url": "#id=2",
+    #                 "target": "_blank",
+    #                 "icon": "fas fa-sign-out-alt",
+    #                 "external": True,
+    #             },
+    #         ],
+    #     }
+    # },
+}
+
+DSGOVBR_LOGIN_ALTERNATIVE_METHODS = [
     {
         'type': 'govbr',
         'url': 'https://sso.acesso.gov.br',

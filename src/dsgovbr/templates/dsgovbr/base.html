@@ -16,7 +16,6 @@
 
   <!-- Design System de Governo-->
   {% compress css %}
-  <link rel="stylesheet" type="text/x-scss" href="{% static 'vendors/serpro/core.scss' %}" />
   <link rel="stylesheet" type="text/x-scss" href="{% static 'dsgovbr/scss/dsgovbr.scss' %}" />
   {% endcompress %}
 
@@ -61,9 +60,7 @@
     {% endblock preheader %}
 
     {% block header %}
-      {% if not is_popup %}
-        {% include 'dsgovbr/header.html' %}
-      {% endif %}
+      {% include 'dsgovbr/header.html' %}
     {% endblock header %}
 
     <div id="container">
@@ -206,11 +203,9 @@
 
   </div>
 
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  {% compress js %}
-  <script type="text/javascript" src="{% static 'vendors/serpro/partial/js/core-init.js' %}"></script>
-  {% endcompress %}
+  <script src="https://unpkg.com/@popperjs/core@2" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr" type="text/javascript"></script>
+  <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js" type="text/javascript"></script>
   {% block extrabody %}{% endblock extrabody %}
 </body>
 

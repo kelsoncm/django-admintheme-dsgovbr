@@ -84,9 +84,11 @@
                     </div>
                   </div>
 
-                  <nav class="menu-body" role="tree">
-                    {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %}
-                  </nav>
+                  {% if dsgovbr.header.menu.show %}
+                    <nav class="menu-body" role="tree">
+                      {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %}
+                    </nav>
+                  {% endif %}
 
                   <div class="menu-footer">
                     <div class="menu-links">

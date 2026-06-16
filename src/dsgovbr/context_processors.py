@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.http import HttpRequest
+from django.contrib import admin
 from django.urls import reverse
 
 
@@ -11,9 +12,10 @@ def _get_element_as_list(dictionary: dict, name: str) -> list:
 def layout_settings(request: HttpRequest) -> dict:
     header_settings = getattr(settings, "DSGOVBR_HEADER", {})
 
-    project_company = getattr(settings, "PROJECT_COMPANY", "Your company")
+    project_company = getattr(settings, "PROJECT_COMPANY", "Minha empresa")
     project_title = getattr(settings, "PROJECT_TITLE", "Nome do projeto")
     project_subtitle = getattr(settings, "PROJECT_SUBTITLE", "Slogan do projeto")
+    site_admin_atual = admin.site
 
     return {
         "project_company": project_company,
@@ -25,6 +27,7 @@ def layout_settings(request: HttpRequest) -> dict:
         "project_license": getattr(settings, "PROJECT_LICENSE", "Licença MIT"),
         "project_license_url": getattr(settings, "PROJECT_LICENSE_URL", "https://opensource.org/license/mit"),
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
+        "admin_app_list": site_admin_atual.get_app_list(request),
         "dsgovbr": {
             "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
             "header": {
@@ -80,6 +83,14 @@ def layout_settings(request: HttpRequest) -> dict:
                     },
                     "menu": {
                         "show": True,
+                        "localizacao": "fixo", # fixo|flutuante
+                        "padding": {
+                        },
+                        "header": {
+                        },
+                        "footer": {
+                        },
+                        "items": "",
                     },
                     "search": {
                         "show": True,

@@ -9,6 +9,22 @@ def layout_settings(request: HttpRequest) -> dict:
     is_staff = user and user.is_authenticated and user.is_staff
     available_apps = admin.site.get_app_list(request) if is_staff else []
 
+    fast_access_links = getattr(
+        settings,
+        "APP_FAST_ACCESS_LINKS", 
+        [{'url': '/', 'label': 'Home'}]
+    )
+    if not isinstance(fast_access_links, list):
+        fast_access_links = []
+
+    feature_links = getattr(
+        settings,
+        "APP_FEATURE_LINKS", 
+        [{'icon': 'fas fa-adjust', 'label': 'Funcionalidade 1'}]
+    )
+    if not isinstance(feature_links, list):
+        feature_links = []
+
     return {
         "project_company": getattr(settings, "PROJECT_COMPANY", "PROJECT_COMPANY"),
         "project_title": getattr(settings, "PROJECT_TITLE", "PROJECT_TITLE"),
@@ -23,19 +39,23 @@ def layout_settings(request: HttpRequest) -> dict:
         "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
         "have_header_menu_trigger": True,
         "available_apps": available_apps,
-        "fast_access_links": getattr(
-            settings,
-            "APP_FAST_ACCESS_LINKS", 
-            [
-                {'url': '/', 'label': 'Home'}
-            ]
-        ),
-        "feature_links": getattr(
-            settings,
-            "APP_FEATURE_LINKS", 
-            [
-                {'icon': 'fas fa-adjust', 'label': 'Funcionalidade 1'}
-            ]
-        ),
+        "fast_access_links": fast_access_links,
+        "feature_links": feature_links,
+        "login_alternative_methods": getattr(settings, "LOGIN_ALTERNATIVE_METHODS",[]),
+        "header": {
+            **{
+                "type": "compact",
+                "logo_type": "compact",
+                "show_logo": True,
+                "show_signature": False,
+                "show_title": True,
+                "show_subtitle": False,
+                "show_menu": True,
+                "show_login": True,
+                "show_search": False,
+                "show_links": bool(fast_access_links),
+                "show_features": bool(feature_links),
+            },
+            **getattr(settings, "DSGOVBR_HEADER", {})
+         },
     }
-

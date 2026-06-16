@@ -32,13 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'dsgovbr',
-    'import_export',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
     'compressor',
     'core',
     'accounts',
@@ -50,6 +43,14 @@ INSTALLED_APPS = [
     'media_library',
     'ui_showcase',
     'qa_orchestrator',
+    'import_export',
+    'django_extensions',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -168,5 +169,23 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-
-
+LOGIN_ALTERNATIVE_METHODS = [
+    {
+        'type': 'govbr',
+        'url': 'https://sso.acesso.gov.br',
+        'target': '_blank',
+        'title': 'Entrar com gov.br',
+    },
+    {
+        'type': 'default',
+        'url': '#',
+        'icon': 'fas fa-key',
+        'title': 'Entrar com Suap',
+    },
+    {
+        'type': 'default',
+        'url': '#',
+        'icon': 'fas fa-university',
+        'title': 'Entrar com Sabiá',
+    }
+]

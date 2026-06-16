@@ -10,6 +10,14 @@ $padding-action-checkbox: 16px;
 $height-container-offset: 130px;
 $top-submit-row: 86px;
 
+// Sandbox Variables
+$sandbox-border-color: #ccc;
+$sandbox-border-radius: 4px;
+$sandbox-padding: 16px;
+$sandbox-margin-bottom: 24px;
+$sandbox-gap: 8px;
+$sandbox-card-height: 100%;
+
 div#container {
     min-height: calc(100vh - #{$height-container-offset});
 }
@@ -182,4 +190,24 @@ span.action-counter {
     .br-table table.import-preview tr.update {
         background-color: var(--blue-warm-vivid-10);
     }
+}
+
+// Sandbox styles
+.sandbox-app-card {
+    height: $sandbox-card-height;
+    border: 1px solid $sandbox-border-color;
+    border-radius: $sandbox-border-radius;
+    padding: $sandbox-padding;
+    margin-bottom: $sandbox-margin-bottom;
+}
+
+.sandbox-instruction-card {
+    border: 1px solid $sandbox-border-color;
+    border-radius: $sandbox-border-radius;
+    padding: $sandbox-padding;
+    margin-bottom: $sandbox-margin-bottom;
+}
+
+.sandbox-flex-gap {
+    gap: $sandbox-gap;
 }

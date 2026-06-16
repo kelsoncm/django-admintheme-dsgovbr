@@ -34,28 +34,41 @@ def layout_settings(request: HttpRequest) -> dict:
         "project_copyright": getattr(settings, "PROJECT_COPYRIGHT", "@2025 PROJECT_COPYRIGHT"),
         "project_license": getattr(settings, "PROJECT_LICENSE", "Licença MIT"),
         "project_license_url": getattr(settings, "PROJECT_LICENSE_URL", "https://opensource.org/license/mit"),
-
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
-        "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
-        "have_header_menu_trigger": True,
-        "available_apps": available_apps,
-        "fast_access_links": fast_access_links,
-        "feature_links": feature_links,
-        "login_alternative_methods": getattr(settings, "LOGIN_ALTERNATIVE_METHODS",[]),
-        "header": {
-            **{
-                "type": "compact",
-                "logo_type": "compact",
-                "show_logo": True,
-                "show_signature": False,
-                "show_title": True,
-                "show_subtitle": False,
-                "show_menu": True,
-                "show_login": True,
-                "show_search": False,
-                "show_links": bool(fast_access_links),
-                "show_features": bool(feature_links),
+
+        "dsgovbr": {
+            "user_avatar": "https://cdn-icons-png.freepik.com/512/6596/6596121.png",
+            "header": {
+                **{
+                    "type": "compact",
+                    "logo_type": "compact",
+                    "show_logo": True,
+                    "show_signature": False,
+                    "show_title": True,
+                    "show_subtitle": False,
+                    "show_menu": True,
+                    "show_login": True,
+                    "show_search": False,
+                    "show_fast_access_links": bool(fast_access_links),
+                    "fast_access_links": fast_access_links,
+                    "show_feature_links": bool(feature_links),
+                    "feature_links": feature_links,
+                    "available_apps": available_apps,
+                },
+                **getattr(settings, "DSGOVBR_HEADER", {})
             },
-            **getattr(settings, "DSGOVBR_HEADER", {})
-         },
+            "footer": {
+                **{
+                    "show": True,
+                },
+                **getattr(settings, "DSGOVBR_FOOTER", {})
+            },
+            "login": {
+                **{
+                    "show": True,
+                    "alternative_methods": [],
+                },
+                **getattr(settings, "DSGOVBR_LOGIN", {})
+            },
+        },
     }

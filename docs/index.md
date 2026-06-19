@@ -118,15 +118,15 @@ O Menu pode ser do tipo flutuante (flutua sobre o conteúdo) ou fixo (empurra o 
 | 11  | Painel do menu               | —           | Obrigatório |
 | 12  | Rodapé do menu               | Footer      | Opcional    |
 
-![header-menu.png](docs/images/header-menu.png)
+![header-menu.png](./images/header-menu.png)
 
-![header-menu-flutuante.png](docs/images/header-menu-flutuante.png)
+![header-menu-flutuante.png](./images/header-menu-flutuante.png)
 
-![header-menu-fixo.png](docs/images/header-menu-fixo.png)
+![header-menu-fixo.png](./images/header-menu-fixo.png)
 
-![header-menu-agrupamentos.png](docs/images/header-menu-agrupamentos.png)
+![header-menu-agrupamentos.png](./images/header-menu-agrupamentos.png)
 
-![header-menu-navegacao.png](docs/images/header-menu-navegacao.png)
+![header-menu-navegacao.png](./images/header-menu-navegacao.png)
 
 ## 🚀 Instalação
 

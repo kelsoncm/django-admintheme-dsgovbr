@@ -81,23 +81,23 @@ linha de elementos. A anatomia do Header é composta por:
 
 ##### Header Padrão
 
-![header-padrao.png](./docs/images/header-padrao.png)
+![header-padrao.png](./images/header-padrao.png)
 
 ##### Header Compacto
 
-![header-padrao.png](./docs/images/header-compacto.png)
+![header-padrao.png](./images/header-compacto.png)
 
 ##### Header Mobile inicial
 
-![header-mobile-inicial.png](./docs/images/header-mobile-inicial.png)
+![header-mobile-inicial.png](./images/header-mobile-inicial.png)
 
 ##### Header Mobile ao clicar em search
 
-![header-mobile-search.png](./docs/images/header-mobile-search.png)
+![header-mobile-search.png](./images/header-mobile-search.png)
 
 ##### Header Mobile nos botões agrupadores de ações (links ou funcionalidades)
 
-![header-mobile-actions.png](./docs/images/header-mobile-actions.png)
+![header-mobile-actions.png](./images/header-mobile-actions.png)
 
 ##### Header Menu
 

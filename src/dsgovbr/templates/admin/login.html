@@ -81,8 +81,20 @@
             <div class="mb-4">
               <button class="btn-govbr-primary" type="submit">Entrar</button>
             </div>
+            <div class="mt-4 pt-3 text-center login-extra-links-container">
+              {% url 'register' as register_url %}
+              <div class="mb-3">
+                <span>Ainda não tem conta?</span>
+                <a href="{% if register_url %}{{ register_url }}{% else %}#{% endif %}" class="login-register-link ml-1"><strong>Cadastre-se</strong></a>
+              </div>
+              {% url 'admin_password_reset' as password_reset_url %}
+              <div>
+                <a href="{% if password_reset_url %}{{ password_reset_url }}{% else %}#{% endif %}" class="login-forgot-password-link">Esqueci minha senha</a>
+              </div>
+            </div>
           </form>
 
+          {% if login_alternative_methods %}
           <!-- Divisor alternativo -->
           <div class="d-flex align-items-center my-4">
             <hr class="flex-grow-1 login-divider-line">
@@ -90,32 +102,34 @@
             <hr class="flex-grow-1 login-divider-line">
           </div>
 
-          <!-- Botão decorativo oficial do GOV.BR -->
-          <div class="mb-3">
-            <a href="https://sso.acesso.gov.br" target="_blank" class="govbr-icon-button">
-              <img src="{% static 'vendors/serpro/govbr.svg' %}" alt="gov.br">
-              Entrar com gov.br
-            </a>
-          </div>
+          {% for method in login_alternative_methods %}
+            {% if method.type == 'govbr' %}
+            <!-- Botão decorativo oficial do GOV.BR -->
+            <div class="mb-3">
+              <a href="{{ method.url }}" {% if method.target %}target="{{ method.target }}"{% endif %} class="govbr-icon-button">
+                <img src="{% static method.icon_svg|default:'vendors/serpro/govbr.svg' %}" alt="{{ method.alt|default:'gov.br' }}">
+                {{ method.title|default:'Entrar com gov.br' }}
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
 
           <div class="br-list login-alt-options-container">
-            <a href="#" class="alt-option-item">
-              <i class="fas fa-key"></i>
-              <span>Entrar com Certificado Digital</span>
-            </a>
-            <a href="#" class="alt-option-item">
-              <i class="fas fa-university"></i>
-              <span>Login por bancos credenciados</span>
-            </a>
+            {% for method in login_alternative_methods %}
+              {% if method.type != 'govbr' %}
+              <a href="{{ method.url }}" class="alt-option-item" {% if method.target %}target="{{ method.target }}"{% endif %}>
+                {% if method.icon %}
+                <i class="{{ method.icon }}"></i>
+                {% endif %}
+                <span>{{ method.title }}</span>
+              </a>
+              {% endif %}
+            {% endfor %}
           </div>
+          {% endif %}
         </div>
         
-        {% url 'admin_password_reset' as password_reset_url %}
-        {% if password_reset_url %}
-        <div class="text-center mt-4 pt-3 login-forgot-password-container">
-          <a href="{{ password_reset_url }}" class="login-forgot-password-link">Esqueceu sua senha ou usuário?</a>
-        </div>
-        {% endif %}
+
       </div>
     </div>
     

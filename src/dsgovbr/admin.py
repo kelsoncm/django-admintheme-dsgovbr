@@ -8,8 +8,7 @@ from django.utils.text import capfirst
 from django.urls import path, reverse
 from django.shortcuts import redirect
 from django.db.models import Model
-from django.contrib.admin import ModelAdmin
-from django.contrib.admin.exceptions import NotRegistered
+from django.contrib.admin import ModelAdmin, AdminSite
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.admin.utils import quote, unquote
 from django.contrib.admin.options import IS_POPUP_VAR, TO_FIELD_VAR, flatten_fieldsets
@@ -389,3 +388,25 @@ class DSGovBrModelAdmin(ImportExportMixin, ExportActionMixin, DSGovBrBaseModelAd
                 admin=self,
             ),
         ]
+
+
+class DSGovBrAdminSite(AdminSite):
+    site_header = getattr(settings, "PROJECT_COMPANY", "Minha empresa")
+
+    def get_app_list(self, request, app_label=None):
+        """
+        Injeta e modifica a variável app_list antes de enviá-la para o template.
+        """
+        # Obtém a lista padrão gerada pelo Django
+        app_list = super().get_app_list(request, app_label)
+
+        # Exemplo de customização: Ordenar os apps de Z a A
+        app_list.sort(key=lambda x: x['name'], reverse=True)
+
+        # Exemplo de filtragem: Esconder um app específico (ex: 'auth') para usuários comuns
+        if not request.user.is_superuser:
+            app_list = [app for app in app_list if app['app_label'] != 'auth']
+
+        print("app_list", app_list)
+
+        return app_list

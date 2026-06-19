@@ -1,185 +1,31 @@
-// Variables
-$color-bg-white: #fff;
-$font-size-small: 80%;
-$font-size-medium-small: 90%;
-$spacing-2em: 2em;
-$spacing-5em: 5em;
-$spacing-7em: 7em;
-$spacing-action-checkbox: 24px;
-$padding-action-checkbox: 16px;
-$height-container-offset: 130px;
-$top-submit-row: 86px;
+//--sign-in-img=40px
+@import "../../vendors/serpro/core";
 
-div#container {
-    min-height: calc(100vh - #{$height-container-offset});
+#avatar-menu {
+  margin-top: 1em;
+  z-index: 1;
 }
 
-span.feedback.danger > ul#id_token_error {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#avatar-menu .br-avatar.large {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-fieldset.fieldset.br-card {
-    padding: $spacing-2em;
+#avatar-dropdown-trigger {
+  padding-left: 0;
 }
 
-fieldset.fieldset.br-card > legend {
-    top: $spacing-5em;
-    position: relative;
-    min-height: $spacing-7em;
+#avatar-menu .br-avatar-name {
+  font-weight: var(--font-weight-bold);
 }
 
-fieldset.fieldset > legend > .description {
-    font-size: $font-size-small;
-    font-weight: 500;
-    color: var(--color-light);
+#avatar-menu .br-avatar-role {
+  font-size: var(--font-size-scale-down-01);
 }
 
-th.action-checkbox-column, td.action-checkbox {
-    width: $spacing-action-checkbox;
-    padding: $padding-action-checkbox $padding-action-checkbox;
-}
-
-#result_list tbody th {
-    background: transparent;
-}
-
-#result_list tbody th:hover {
-    background: linear-gradient(rgba(var(--color-rgb),var(--hover)),rgba(var(--color-rgb),var(--hover)));
-}
-
-a.br-item {
-    text-decoration: none;
-}
-
-.main-content a {
-    text-decoration: none;
-}
-
-.main-content a {
-    text-decoration: none;
-}
-
-.br-input .feedback, .br-checkbox > .feedback {
-    color: var(--color-light);
-}
-
-.br-checkbox {
-    flex-direction: column;
-}
-.br-checkbox > span.feedback {
-    margin-left: $spacing-2em;
-}
-
-#filter-bar {
-    background: $color-bg-white;
-    padding: 4px;
-    z-index: 110;
-    position: relative;
-    margin-top: -50px;
-}
-
-.filter-choices {
-    z-index: 10;
-}
-
-.br-button.close {
+#avatar-menu i.fa-external-link-alt {
     float: right;
-}
-
-#filter-bar-widgets {
-    padding-right: 16px;
-}
-
-#filter-bar-widgets-nav {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#filter-line {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    justify-content: space-between;
-    margin: 16px 24px 16px 0;
-}
-
-#filter-apply {
-    margin-bottom: 8px;
-}
-
-#filter-tags {
-    margin: 0 8px;
-}
-
-#filter-tags .br-tag {
-    font-size: $font-size-medium-small;
-}
-
-span.action-counter {
-    display: none;
-}
-
-.actions-trigger.dropdown .br-list {
-  left: auto !important;
-  right: 0 !important;
-}
-
-.selected-bar {
-    display: none;
-}
-
-.search-bar.show {
-    padding-left: 0;
-}
-
-.submit-row {
-    position: sticky;
-    top: $top-submit-row;
-    background: $color-bg-white;
-    z-index: 999;
-    padding: 16px 0;
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    justify-content: space-between;
-}
-
-.float-right {
-    float: right;
-}
-
-.br-table table.import-preview tr.new {
-    background-color: var(--green-cool-vivid-5);
-}
-.br-table table.import-preview tr.new ins {
-    background-color: var(--green-10) !important;
-    text-decoration: none;
-}
-.br-table table.import-preview tr.new del {
-    background-color: var(--red-vivid-10) !important;
-    text-decoration: none;
-}
-
-.br-table table.import-preview tr.update {
-    background-color: var(--blue-warm-vivid-10);
-}
-
-.br-table table.import-preview tr.update ins {
-    background-color: var(--green-10) !important;
-    text-decoration: none;
-}
-
-.br-table table.import-preview tr.update del {
-    background-color: var(--red-vivid-10) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-    .br-table table.import-preview tr.new {
-        background-color: var(--green-cool-vivid-5);
-    }
-    .br-table table.import-preview tr.update {
-        background-color: var(--blue-warm-vivid-10);
-    }
+    font-size: var(--font-size-scale-down-01);
+    margin-left: 4px;
 }

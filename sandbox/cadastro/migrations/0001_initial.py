@@ -8,67 +8,191 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Orgao',
+            name="Orgao",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=255, verbose_name='Nome do Órgão')),
-                ('sigla', models.CharField(max_length=20, verbose_name='Sigla')),
-                ('descricao', models.TextField(blank=True, null=True, verbose_name='Descrição')),
-                ('data_criacao', models.DateField(blank=True, null=True, verbose_name='Data de Criação')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Está Ativo?')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(max_length=255, verbose_name="Nome do Órgão"),
+                ),
+                ("sigla", models.CharField(max_length=20, verbose_name="Sigla")),
+                (
+                    "descricao",
+                    models.TextField(blank=True, null=True, verbose_name="Descrição"),
+                ),
+                (
+                    "data_criacao",
+                    models.DateField(
+                        blank=True, null=True, verbose_name="Data de Criação"
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Está Ativo?"),
+                ),
             ],
             options={
-                'verbose_name': 'Órgão',
-                'verbose_name_plural': 'Órgãos',
+                "verbose_name": "Órgão",
+                "verbose_name_plural": "Órgãos",
             },
         ),
         migrations.CreateModel(
-            name='Servico',
+            name="Servico",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=255, verbose_name='Nome do Serviço')),
-                ('url_portal', models.URLField(blank=True, null=True, verbose_name='URL no Portal gov.br')),
-                ('publico_alvo', models.CharField(help_text='Ex: Cidadãos, Empresas, Servidores', max_length=200, verbose_name='Público-Alvo')),
-                ('orgaos_envolvidos', models.ManyToManyField(related_name='servicos', to='cadastro.orgao', verbose_name='Órgãos Envolvidos')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(max_length=255, verbose_name="Nome do Serviço"),
+                ),
+                (
+                    "url_portal",
+                    models.URLField(
+                        blank=True, null=True, verbose_name="URL no Portal gov.br"
+                    ),
+                ),
+                (
+                    "publico_alvo",
+                    models.CharField(
+                        help_text="Ex: Cidadãos, Empresas, Servidores",
+                        max_length=200,
+                        verbose_name="Público-Alvo",
+                    ),
+                ),
+                (
+                    "orgaos_envolvidos",
+                    models.ManyToManyField(
+                        related_name="servicos",
+                        to="cadastro.orgao",
+                        verbose_name="Órgãos Envolvidos",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Serviço Público',
-                'verbose_name_plural': 'Serviços Públicos',
+                "verbose_name": "Serviço Público",
+                "verbose_name_plural": "Serviços Públicos",
             },
         ),
         migrations.CreateModel(
-            name='Servidor',
+            name="Servidor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=255, verbose_name='Nome Completo')),
-                ('cpf', models.CharField(help_text='Formato: 000.000.000-00', max_length=14, verbose_name='CPF')),
-                ('email', models.EmailField(max_length=254, verbose_name='E-mail Funcional')),
-                ('cargo', models.CharField(max_length=150, verbose_name='Cargo Ocupado')),
-                ('data_admissao', models.DateField(verbose_name='Data de Admissão')),
-                ('orgao', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servidores', to='cadastro.orgao', verbose_name='Órgão Vinculado')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(max_length=255, verbose_name="Nome Completo"),
+                ),
+                (
+                    "cpf",
+                    models.CharField(
+                        help_text="Formato: 000.000.000-00",
+                        max_length=14,
+                        verbose_name="CPF",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(max_length=254, verbose_name="E-mail Funcional"),
+                ),
+                (
+                    "cargo",
+                    models.CharField(max_length=150, verbose_name="Cargo Ocupado"),
+                ),
+                ("data_admissao", models.DateField(verbose_name="Data de Admissão")),
+                (
+                    "orgao",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="servidores",
+                        to="cadastro.orgao",
+                        verbose_name="Órgão Vinculado",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Servidor',
-                'verbose_name_plural': 'Servidores',
+                "verbose_name": "Servidor",
+                "verbose_name_plural": "Servidores",
             },
         ),
         migrations.CreateModel(
-            name='Documento',
+            name="Documento",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tipo', models.CharField(choices=[('identidade', 'Documento de Identidade'), ('diploma', 'Diploma Acadêmico'), ('portaria', 'Portaria de Nomeação'), ('outros', 'Outros')], max_length=30, verbose_name='Tipo de Documento')),
-                ('arquivo', models.FileField(blank=True, null=True, upload_to='documentos/', verbose_name='Arquivo PDF/Imagem')),
-                ('data_upload', models.DateTimeField(auto_now_add=True, verbose_name='Data do Upload')),
-                ('servidor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='documentos', to='cadastro.servidor', verbose_name='Servidor')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "tipo",
+                    models.CharField(
+                        choices=[
+                            ("identidade", "Documento de Identidade"),
+                            ("diploma", "Diploma Acadêmico"),
+                            ("portaria", "Portaria de Nomeação"),
+                            ("outros", "Outros"),
+                        ],
+                        max_length=30,
+                        verbose_name="Tipo de Documento",
+                    ),
+                ),
+                (
+                    "arquivo",
+                    models.FileField(
+                        blank=True,
+                        null=True,
+                        upload_to="documentos/",
+                        verbose_name="Arquivo PDF/Imagem",
+                    ),
+                ),
+                (
+                    "data_upload",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data do Upload"
+                    ),
+                ),
+                (
+                    "servidor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="documentos",
+                        to="cadastro.servidor",
+                        verbose_name="Servidor",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Documento',
-                'verbose_name_plural': 'Documentos',
+                "verbose_name": "Documento",
+                "verbose_name_plural": "Documentos",
             },
         ),
     ]

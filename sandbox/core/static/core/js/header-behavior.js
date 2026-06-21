@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const headerComponent = document.querySelector('.br-header');
-  
+
   if (headerComponent) {
     // Instancia o comportamento do Header (Busca expansível, dropdown de login)
     // Assumindo que a biblioteca core.js do dsgovbr está acessível globalmente como `core`

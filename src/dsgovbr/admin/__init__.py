@@ -1,4 +1,3 @@
-from django.utils.translation import gettext as _
 from collections.abc import Callable, Generator
 from django.http import HttpRequest, HttpResponse
 from dataclasses import dataclass
@@ -13,9 +12,8 @@ from django.contrib.admin.views.main import ChangeList
 from django.contrib.admin.utils import quote, unquote
 from django.contrib.admin.options import IS_POPUP_VAR, TO_FIELD_VAR, flatten_fieldsets
 from django.contrib.admin.helpers import AdminErrorList, AdminForm, InlineAdminFormSet
-from django.contrib.admin.exceptions import DisallowedModelAdminToField
+from django.contrib.admin.exceptions import DisallowedModelAdminToField, NotRegistered
 from django.core.exceptions import PermissionDenied
-from import_export.admin import ImportExportMixin, ExportActionMixin
 
 
 @dataclass(frozen=True)
@@ -198,11 +196,10 @@ class DSGovBrBaseModelAdmin(ModelAdmin):
             raise DisallowedModelAdminToField(
                 f"The field {to_field} cannot be referenced."
             )
-
         obj = self.get_object(request, unquote(object_id), to_field)
         try:
             related_modeladmin = self.admin_site.get_model_admin(obj.__class__)
-        except NotRegistered as e:
+        except NotRegistered:
             wrapper_kwargs = {}
         else:
             wrapper_kwargs = {
@@ -369,27 +366,6 @@ class DSGovBrBaseModelAdmin(ModelAdmin):
         return parent_media + Media(js=["admin/js/%s" % url for url in js])
 
 
-class DSGovBrModelAdmin(ImportExportMixin, ExportActionMixin, DSGovBrBaseModelAdmin):
-
-    def get_object_tool_actions(self, request: HttpRequest) -> list[ObjectToolSpec]:
-        return super().get_object_tool_actions(request) + [
-            ObjectToolSpec(
-                label=_("Import"),
-                handler="import",
-                css_class="import-link",
-                permission=f"{self.opts.app_label}.change_{self.opts.model_name}",
-                admin=self,
-            ),
-            ObjectToolSpec(
-                label=_("Export"),
-                handler="export",
-                css_class="export-link",
-                permission=f"{self.opts.app_label}.change_{self.opts.model_name}",
-                admin=self,
-            ),
-        ]
-
-
 class DSGovBrAdminSite(AdminSite):
     site_header = getattr(settings, "PROJECT_COMPANY", "Minha empresa")
 
@@ -401,11 +377,11 @@ class DSGovBrAdminSite(AdminSite):
         app_list = super().get_app_list(request, app_label)
 
         # Exemplo de customização: Ordenar os apps de Z a A
-        app_list.sort(key=lambda x: x['name'], reverse=True)
+        app_list.sort(key=lambda x: x["name"], reverse=True)
 
         # Exemplo de filtragem: Esconder um app específico (ex: 'auth') para usuários comuns
         if not request.user.is_superuser:
-            app_list = [app for app in app_list if app['app_label'] != 'auth']
+            app_list = [app for app in app_list if app["app_label"] != "auth"]
 
         print("app_list", app_list)
 

@@ -14,7 +14,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-!2i1-mww1640hvo^j9!=3%8##cqxv&xjupj9+^^khyaj#!9zf$'
+SECRET_KEY = "django-insecure-!2i1-mww1640hvo^j9!=3%8##cqxv&xjupj9+^^khyaj#!9zf$"
 
 DEBUG = True
 
@@ -50,76 +50,78 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'dsgovbr.context_processors.layout_settings',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "dsgovbr.context_processors.layout_settings",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'accounts.CustomUser'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-LANGUAGE_CODE = 'pt-br'
-TIME_ZONE = 'America/Sao_Paulo'
+LANGUAGE_CODE = "pt-br"
+TIME_ZONE = "America/Sao_Paulo"
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static_root'
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static_root"
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-    ('text/javascript', 'dsgovbr.compressor_filters.ES6BundlerFilter'),
+    ("text/x-scss", "django_libsass.SassCompiler"),
+    ("text/javascript", "dsgovbr.compressor_filters.ES6BundlerFilter"),
 )
 COMPRESS_ENABLED = True
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Redirecionamentos de Autenticação
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 DSGOVBR_HEADER = {
     "links": {
@@ -136,7 +138,7 @@ DSGOVBR_HEADER = {
                 "icon": "fas fa-location-arrow",
                 "external": True,
             },
-        ]
+        ],
     },
     "funcionalidades": {
         "show": True,
@@ -161,7 +163,7 @@ DSGOVBR_HEADER = {
                 "icon": "fas fa-headset",
                 "url": "#id=1",
             },
-        ]
+        ],
     },
     # "login": {
     #     "show": True,
@@ -185,21 +187,21 @@ DSGOVBR_HEADER = {
 
 DSGOVBR_LOGIN_ALTERNATIVE_METHODS = [
     {
-        'type': 'govbr',
-        'url': 'https://sso.acesso.gov.br',
-        'target': '_blank',
-        'title': 'Entrar com gov.br',
+        "type": "govbr",
+        "url": "https://sso.acesso.gov.br",
+        "target": "_blank",
+        "title": "Entrar com gov.br",
     },
     {
-        'type': 'default',
-        'url': '#',
-        'icon': 'fas fa-key',
-        'title': 'Entrar com Suap',
+        "type": "default",
+        "url": "#",
+        "icon": "fas fa-key",
+        "title": "Entrar com Suap",
     },
     {
-        'type': 'default',
-        'url': '#',
-        'icon': 'fas fa-university',
-        'title': 'Entrar com Sabiá',
-    }
+        "type": "default",
+        "url": "#",
+        "icon": "fas fa-university",
+        "title": "Entrar com Sabiá",
+    },
 ]

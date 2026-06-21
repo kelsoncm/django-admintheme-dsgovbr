@@ -10,8 +10,6 @@ def _get_element_as_list(dictionary: dict, name: str) -> list:
 
 
 def layout_settings(request: HttpRequest) -> dict:
-    header_settings = getattr(settings, "DSGOVBR_HEADER", {})
-
     project_company = getattr(settings, "PROJECT_COMPANY", "Minha empresa")
     project_title = getattr(settings, "PROJECT_TITLE", "Nome do projeto")
     project_subtitle = getattr(settings, "PROJECT_SUBTITLE", "Slogan do projeto")
@@ -22,10 +20,16 @@ def layout_settings(request: HttpRequest) -> dict:
         "project_title": project_title,
         "project_subtitle": project_subtitle,
         "project_version": getattr(settings, "PROJECT_VERSION", "v1.0.0"),
-        "project_last_startup": getattr(settings, "PROJECT_LAST_STARTUP", "PROJECT_LAST_STARTUP"),
-        "project_copyright": getattr(settings, "PROJECT_COPYRIGHT", "@2025 PROJECT_COPYRIGHT"),
+        "project_last_startup": getattr(
+            settings, "PROJECT_LAST_STARTUP", "PROJECT_LAST_STARTUP"
+        ),
+        "project_copyright": getattr(
+            settings, "PROJECT_COPYRIGHT", "@2025 PROJECT_COPYRIGHT"
+        ),
         "project_license": getattr(settings, "PROJECT_LICENSE", "Licença MIT"),
-        "project_license_url": getattr(settings, "PROJECT_LICENSE_URL", "https://opensource.org/license/mit"),
+        "project_license_url": getattr(
+            settings, "PROJECT_LICENSE_URL", "https://opensource.org/license/mit"
+        ),
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
         "admin_app_list": site_admin_atual.get_app_list(request),
         "dsgovbr": {
@@ -74,45 +78,40 @@ def layout_settings(request: HttpRequest) -> dict:
                             "items": [
                                 {
                                     "label": "Sair",
-                                    "url": reverse('logout'),
+                                    "url": reverse("logout"),
                                     "target": "_blank",
                                     "icon": "fas fa-sign-out-alt",
                                 },
                             ],
-                        }
+                        },
                     },
                     "menu": {
                         "show": True,
-                        "localizacao": "fixo", # fixo|flutuante
-                        "padding": {
-                        },
-                        "header": {
-                        },
-                        "footer": {
-                        },
+                        "localizacao": "fixo",  # fixo|flutuante
+                        "padding": {},
+                        "header": {},
+                        "footer": {},
                         "items": "",
                     },
                     "search": {
                         "show": True,
                     },
-                    "responsive_dropdown": {
-                        "show": True
-                    },
+                    "responsive_dropdown": {"show": True},
                 },
-                **getattr(settings, "DSGOVBR_HEADER", {})
+                **getattr(settings, "DSGOVBR_HEADER", {}),
             },
             "footer": {
                 **{
                     "show": True,
                 },
-                **getattr(settings, "DSGOVBR_FOOTER", {})
+                **getattr(settings, "DSGOVBR_FOOTER", {}),
             },
             "login": {
                 **{
                     "show": True,
                     "alternative_methods": [],
                 },
-                **getattr(settings, "DSGOVBR_LOGIN", {})
+                **getattr(settings, "DSGOVBR_LOGIN", {}),
             },
         },
     }

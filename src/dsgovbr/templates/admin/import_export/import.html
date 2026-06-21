@@ -180,7 +180,7 @@
                             {% for row in result.valid_rows %}
                                 <tr class="{{ row.import_type }}">
                                     <td class="import-type">
-                                        
+
                                         {% if row.import_type == 'new' %}
                                             <span class="br-tag bg-mint-cool-vivid-70" aria-describedby="tag-text01">
                                                 <i class="fas fa-plus" aria-hidden="true"></i>
@@ -217,7 +217,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>                
+                </div>
             {% endblock %}
         {% endif %} {# result.has_errors #}
 

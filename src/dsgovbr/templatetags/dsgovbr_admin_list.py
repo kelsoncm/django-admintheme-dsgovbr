@@ -18,7 +18,6 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.contrib.admin.templatetags.base import InclusionAdminNode
 
-
 register = Library()
 
 
@@ -253,7 +252,7 @@ def items_for_result(cl, result, form):
         else:
             # By default the fields come from ModelAdmin.list_editable, but if
             # we pull the fields out of the form instead of list_editable
-            # custom admins can provide fields on a per request basis
+            # custom admin can provide fields on a per request basis
             if (
                 form
                 and field_name in form.fields
@@ -267,18 +266,6 @@ def items_for_result(cl, result, form):
             yield format_html("<td{}>{}</td>", row_class, result_repr)
     if form and not form[cl.model._meta.pk.name].is_hidden:
         yield format_html("<td>{}</td>", form[cl.model._meta.pk.name])
-
-
-class ResultList(list):
-    """
-    Wrapper class used to return items in a list_editable changelist, annotated
-    with the form object for error reporting purposes. Needed to maintain
-    backwards compatibility with existing admin templates.
-    """
-
-    def __init__(self, form, *items):
-        self.form = form
-        super().__init__(*items)
 
 
 class ResultList(list):

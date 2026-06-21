@@ -3,7 +3,7 @@
      id="{{ inline_admin_formset.formset.prefix }}-group"
      data-inline-type="stacked"
      data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
-     
+
 <fieldset class="module {{ inline_admin_formset.classes }}" aria-labelledby="{{ inline_admin_formset.formset.prefix }}-heading">
   {% if inline_admin_formset.is_collapsible %}<details><summary>{% endif %}
   <h2 id="{{ inline_admin_formset.formset.prefix }}-heading" class="inline-heading">
@@ -26,7 +26,7 @@
       <p><b>{{ inline_admin_formset.opts.verbose_name|capfirst }}:</b> <span class="inline_label">
         {% if inline_admin_form.original %}
           {{ inline_admin_form.original }}
-          {% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %} 
+          {% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %}
             <a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="{{ inline_admin_formset.has_change_permission|yesno:'inlinechangelink,inlineviewlink' }}">
               {% if inline_admin_formset.has_change_permission %}{% translate "Change" %}{% else %}{% translate "View" %}{% endif %}
             </a>

@@ -1,16 +1,14 @@
 from django.contrib import admin
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.html import format_html
 from django.contrib import messages
 
-from dsgovbr.admin import (
-    DSGovBrModelAdmin, 
-    ObjectToolSpec, 
-    InstanceActionSpec
-)
+from dsgovbr.admin import ObjectToolSpec, InstanceActionSpec
+from dsgovbr.admin.import_export import DSGovBrModelAdmin
 from .models import Orgao, Servidor, Documento, Servico
+
 
 class DocumentoInline(admin.TabularInline):
     model = Documento
@@ -25,9 +23,9 @@ class ServidorInline(admin.StackedInline):
 
 @admin.register(Orgao)
 class OrgaoAdmin(DSGovBrModelAdmin):
-    list_display = ('sigla', 'nome', 'ativo', 'data_criacao', 'acoes_customizadas')
-    list_filter = ('ativo', 'data_criacao')
-    search_fields = ('nome', 'sigla', 'descricao')
+    list_display = ("sigla", "nome", "ativo", "data_criacao", "acoes_customizadas")
+    list_filter = ("ativo", "data_criacao")
+    search_fields = ("nome", "sigla", "descricao")
     inlines = [ServidorInline]
 
     # Ações Customizadas no topo da Lista (Object Tools)
@@ -40,7 +38,7 @@ class OrgaoAdmin(DSGovBrModelAdmin):
                 handler="gerar_relatorio",
                 icon="fas fa-file-pdf",
                 css_class="btn-secondary",
-                admin=self
+                admin=self,
             )
         )
         return actions
@@ -48,41 +46,49 @@ class OrgaoAdmin(DSGovBrModelAdmin):
     # Implementação do Handler da Ação do Topo
     def gerar_relatorio(self, request):
         # Apenas demonstração retornando um texto simples
-        return HttpResponse("<h2>Relatório PDF de Órgãos Gerado com Sucesso!</h2><p>Esta é uma view customizada simulando a geração de um relatório.</p>")
+        return HttpResponse(
+            "<h2>Relatório PDF de Órgãos Gerado com Sucesso!</h2><p>Esta é uma view customizada simulando a geração de um relatório.</p>"
+        )
 
     # View customizada no nível de Instância (rota automática gerada pelo DSGovBrModelAdmin)
     def historico_customview(self, request, object_id):
         orgao = self.get_object(request, object_id)
-        return HttpResponse(f"<h2>Histórico de Auditoria do Órgão: {orgao.sigla}</h2><p>Aqui você pode listar logs ou auditorias de alterações.</p>")
+        return HttpResponse(
+            f"<h2>Histórico de Auditoria do Órgão: {orgao.sigla}</h2><p>Aqui você pode listar logs ou auditorias de alterações.</p>"
+        )
 
     # Coluna customizada na listagem para facilitar navegação
     def acoes_customizadas(self, obj):
-        url = reverse(f"admin:cadastro_orgao_historico", args=[obj.pk])
-        return format_html('<a class="button" href="{}"><i class="fas fa-history"></i> Auditoria</a>', url)
+        url = reverse("admin:cadastro_orgao_historico", args=[obj.pk])
+        return format_html(
+            '<a class="button" href="{}"><i class="fas fa-history"></i> Auditoria</a>',
+            url,
+        )
+
     acoes_customizadas.short_description = "Ações"
 
 
 @admin.register(Servidor)
 class ServidorAdmin(DSGovBrModelAdmin):
-    list_display = ('nome', 'orgao', 'cargo', 'email', 'data_admissao')
-    list_filter = ('orgao', 'cargo', 'data_admissao')
-    search_fields = ('nome', 'cpf', 'email', 'cargo')
+    list_display = ("nome", "orgao", "cargo", "email", "data_admissao")
+    list_filter = ("orgao", "cargo", "data_admissao")
+    search_fields = ("nome", "cpf", "email", "cargo")
     inlines = [DocumentoInline]
-    
+
     # Ações no nível do Objeto individual (Instance Actions)
     instance_actions = [
         InstanceActionSpec(
             label="Visualizar Crachá",
             handler="visualizar_cracha",
             icon="fas fa-id-card",
-            css_class="btn-primary"
+            css_class="btn-primary",
         ),
         InstanceActionSpec(
             label="Enviar E-mail de Boas Vindas",
             handler="enviar_boas_vindas",
             icon="fas fa-paper-plane",
-            css_class="btn-success"
-        )
+            css_class="btn-success",
+        ),
     ]
 
     # Handlers para as ações de instância
@@ -115,19 +121,21 @@ class ServidorAdmin(DSGovBrModelAdmin):
 
     def enviar_boas_vindas_customview(self, request, object_id):
         servidor = self.get_object(request, object_id)
-        messages.success(request, f"E-mail de boas-vindas enviado com sucesso para {servidor.email}!")
+        messages.success(
+            request, f"E-mail de boas-vindas enviado com sucesso para {servidor.email}!"
+        )
         # Redireciona de volta para a view de preview/visualização do servidor
-        return redirect(reverse('admin:cadastro_servidor_preview', args=[object_id]))
+        return redirect(reverse("admin:cadastro_servidor_preview", args=[object_id]))
 
 
 @admin.register(Servico)
 class ServicoAdmin(DSGovBrModelAdmin):
-    list_display = ('nome', 'url_portal', 'publico_alvo')
-    filter_horizontal = ('orgaos_envolvidos',)
-    search_fields = ('nome', 'publico_alvo')
+    list_display = ("nome", "url_portal", "publico_alvo")
+    filter_horizontal = ("orgaos_envolvidos",)
+    search_fields = ("nome", "publico_alvo")
 
 
 @admin.register(Documento)
 class DocumentoAdmin(DSGovBrModelAdmin):
-    list_display = ('servidor', 'tipo', 'data_upload')
-    list_filter = ('tipo', 'data_upload')
+    list_display = ("servidor", "tipo", "data_upload")
+    list_filter = ("tipo", "data_upload")

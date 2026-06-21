@@ -18,7 +18,7 @@
 
     {% for line in fieldset %}
         <div class="form-row{% if line.fields|length == 1 and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
-            
+
             {% for field in line %}
                 <div>
                         <div class="
@@ -45,7 +45,7 @@
                             {% endif %}
                             {% if not line.fields|length == 1 and not field.is_readonly %}
                                 {{ field.errors }}
-                            {% endif %}                            
+                            {% endif %}
                         </div>
                     {% if field.field.help_text and not field.is_readonly %}
                         <span class="feedback{% if field.field.is_hidden %} hidden{% endif %}" {% if field.field.id_for_label %} id="{{ field.field.id_for_label }}_helptext"{% endif %}" role="alert">

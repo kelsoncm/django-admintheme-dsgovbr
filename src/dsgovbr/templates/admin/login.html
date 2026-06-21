@@ -38,7 +38,7 @@
             <h2 class="login-main-card-title mb-1">Identifique-se no portal</h2>
             <p class="login-main-card-subtitle m-0">Acesse a sua conta administrativa</p>
           </div>
-          
+
           <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
             {% if form.non_field_errors %}
               {% for error in form.non_field_errors %}
@@ -128,17 +128,17 @@
           </div>
           {% endif %}
         </div>
-        
+
 
       </div>
     </div>
-    
+
     <!-- Coluna da Direita: Informações sobre a Conta Gov.br -->
     <div class="col-12 col-md-6 d-flex align-items-stretch">
       <div class="w-100 p-4 text-white d-flex flex-column justify-content-center login-right-panel">
         <h3 class="login-right-panel-title mb-3">Uma conta para tudo</h3>
         <p class="login-right-panel-text mb-4">A sua conta gov.br permite o acesso a centenas de serviços públicos digitais e, agora, ao painel administrativo de controle.</p>
-        
+
         <div class="d-flex align-items-start mb-4">
           <div class="mr-3 login-benefit-item-icon"><i class="fas fa-shield-alt"></i></div>
           <div>

@@ -7,12 +7,12 @@ register = template.Library()
 
 @register.filter
 def first_word(value: str) -> str:
-    return str(value).split(' ')[0]
+    return str(value).split(" ")[0]
 
 
 @register.filter
 def last_word(value: str) -> str:
-    return str(value).split(' ')[0]
+    return str(value).split(" ")[0]
 
 
 @register.filter

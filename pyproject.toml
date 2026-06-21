@@ -31,10 +31,7 @@ classifiers = [
 ]
 keywords = ["django", "govbr", "design-system", "gov.br"]
 dependencies = [
-    "django>=4.2",
-    "django-compressor>=4.4",
-    "django-libsass>=0.9",
-    "libsass>=0.23.0",
+    "django>=5.2",
 ]
 
 [project.urls]
@@ -49,3 +46,18 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 "*" = ["*.html", "*.css", "*.js", "*.png", "*.jpg", "*.gif", "*.svg", "*.ico"]
+
+[dependency-groups]
+dev = [
+    "django-import-export>=4.4.1",
+    "django-extensions>=4.1",
+    "pre-commit>=4.6.0",
+    "black>=26.3.1",
+    "ruff>=0.15.11",
+    "doc8>=2.0.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "python-dotenv>=1.2.2",
+    "pytest-coverage-gate>=1.0.3",
+    "responses>=0.26.0",
+]

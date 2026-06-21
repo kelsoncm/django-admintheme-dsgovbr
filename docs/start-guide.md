@@ -16,7 +16,7 @@ pip install django-dsgovbr
 # settings.py
 
 INSTALLED_APPS = [
-    # Coloque antes do `django.contrib.admin` para garantir que seja que o template path prevaleça sobre os templates 
+    # Coloque antes do `django.contrib.admin` para garantir que seja que o template path prevaleça sobre os templates
     # padrões do Django.
     'dsgovbr',
     'django.contrib.admin',
@@ -65,12 +65,12 @@ Use os templates base do DSGovBR nos seus templates Django:
 {% block content %}
 <div class="br-container">
     <h1>Bem-vindo ao Sistema</h1>
-    
+
     <!-- Botão Primário -->
     <button class="br-button primary" type="button">
         Ação Principal
     </button>
-    
+
     <!-- Mensagem de Sucesso -->
     <div class="br-message success">
         <div class="icon">
@@ -80,7 +80,7 @@ Use os templates base do DSGovBR nos seus templates Django:
             Operação realizada com sucesso!
         </div>
     </div>
-    
+
     <!-- Card -->
     <div class="br-card">
         <div class="card-header">
@@ -111,7 +111,7 @@ class MeuFormulario(forms.Form):
             'placeholder': 'Digite seu nome'
         })
     )
-    
+
     email = forms.EmailField(
         label="E-mail",
         widget=forms.EmailInput(attrs={
@@ -119,7 +119,7 @@ class MeuFormulario(forms.Form):
             'placeholder': 'seuemail@exemplo.gov.br'
         })
     )
-    
+
     mensagem = forms.CharField(
         label="Mensagem",
         widget=forms.Textarea(attrs={

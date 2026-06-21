@@ -5,20 +5,21 @@
 [![Django Versions](https://img.shields.io/badge/django-5.2-blue.svg)](https://www.djangoproject.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Pacote Django para adoção do [Design System do Governo Federal Brasileiro (DS Gov.BR)](https://www.gov.br/ds/home) em 
+Pacote Django para adoção do [Design System do Governo Federal Brasileiro (DS Gov.BR)](https://www.gov.br/ds/home) em
 sites e painel de administração Django.
 
 ## 📋 Sobre
 
-O **django-dsgovbr** facilita a implementação do Design System oficial do Governo Federal em projetos Django, 
+O **django-dsgovbr** facilita a implementação do Design System oficial do Governo Federal em projetos Django,
 inclusive no Django Admin, garantindo conformidade visual e de usabilidade com os padrões estabelecidos pelo gov.br.
 
 ### 🎨 Design System Gov.BR
 
-O [DS Gov.BR](https://www.gov.br/ds/home) é o design system oficial do Governo Federal Brasileiro, criado para padronizar a experiência do 
-usuário em todos os portais e sistemas governamentais.
+O [DS Gov.BR](https://www.gov.br/ds/home) é o design system oficial do Governo Federal Brasileiro, criado para
+padronizar a experiência do usuário em todos os portais e sistemas governamentais.
 
 **Links Oficiais:**
+
 - 🏠 [Site Oficial](https://www.gov.br/ds/home)
 - 📚 [Documentação](https://www.gov.br/ds/fundamentos-visuais/visao-geral)
 - 🎨 [Fundamentos Visuais](https://www.gov.br/ds/fundamentos-visuais/introducao)
@@ -31,11 +32,13 @@ usuário em todos os portais e sistemas governamentais.
 O Design System inclui:
 
 #### Partes principais
+
 - **Header**: Cabeçalho da página
 - **Content**: Área principal do conteúdo
 - **Footer**: Rodapé da página (opcional).
 
 #### Componentes principais
+
 - **Formulários**: Inputs, selects, checkboxes, radio buttons estilizados
 - **Botões**: Primários, secundários, terciários com estados hover/active/disabled
 - **Mensagens**: Alertas, notificações e mensagens de sistema
@@ -46,6 +49,7 @@ O Design System inclui:
 - **Paginação**: Controles de navegação entre páginas
 
 #### Características visuais
+
 - 🎨 **Paleta de Cores Oficial**: Azul Gov.BR (#071D41), cores de status e feedbacks
 - 📱 **Design Responsivo**: Mobile-first, adaptável a todos os dispositivos
 - ♿ **Acessibilidade**: WCAG 2.1 nível AA, suporte a leitores de tela
@@ -59,7 +63,7 @@ O design é divido em 3 partes principais: Header, Content e Footer (opcional).
 
 #### Header
 
-O Header pode ser do tipo padrão ou compacto. O Padrão tem 2 linhas de elementos e o Compacto tem apenas 1 ou 
+O Header pode ser do tipo padrão ou compacto. O Padrão tem 2 linhas de elementos e o Compacto tem apenas 1 ou
 linha de elementos. A anatomia do Header é composta por:
 
 | #  | Elemento                  | Padrão       | Compacto    |
@@ -77,7 +81,6 @@ linha de elementos. A anatomia do Header é composta por:
 | 11 | Lista Dropdown            | Recomendado  | Opcional    |
 | 12 | Superfície                | Obrigatório  | Obrigatório |
 | 13 | Separadores               | Obrigatório  | Obrigatório |
-
 
 ##### Header Padrão
 
@@ -144,7 +147,7 @@ pip install django-dsgovbr
 # settings.py
 
 INSTALLED_APPS = [
-    # Coloque antes do `django.contrib.admin` para garantir que seja que o template path prevaleça sobre os templates 
+    # Coloque antes do `django.contrib.admin` para garantir que seja que o template path prevaleça sobre os templates
     # padrões do Django.
     'dsgovbr',
     'django.contrib.admin',
@@ -193,12 +196,12 @@ Use os templates base do DSGovBR nos seus templates Django:
 {% block content %}
 <div class="br-container">
     <h1>Bem-vindo ao Sistema</h1>
-    
+
     <!-- Botão Primário -->
     <button class="br-button primary" type="button">
         Ação Principal
     </button>
-    
+
     <!-- Mensagem de Sucesso -->
     <div class="br-message success">
         <div class="icon">
@@ -208,7 +211,7 @@ Use os templates base do DSGovBR nos seus templates Django:
             Operação realizada com sucesso!
         </div>
     </div>
-    
+
     <!-- Card -->
     <div class="br-card">
         <div class="card-header">
@@ -239,7 +242,7 @@ class MeuFormulario(forms.Form):
             'placeholder': 'Digite seu nome'
         })
     )
-    
+
     email = forms.EmailField(
         label="E-mail",
         widget=forms.EmailInput(attrs={
@@ -247,7 +250,7 @@ class MeuFormulario(forms.Form):
             'placeholder': 'seuemail@exemplo.gov.br'
         })
     )
-    
+
     mensagem = forms.CharField(
         label="Mensagem",
         widget=forms.Textarea(attrs={
@@ -347,8 +350,9 @@ Contribuições são bem-vindas! Por favor:
 
 ## 📧 Contato
 
-**Kelson da Costa Medeiros**
-- Email: kelsoncm@gmail.com
+Kelson da Costa Medeiros
+
+- Email: <kelsoncm@gmail.com>
 - GitHub: [@kelsoncm](https://github.com/kelsoncm)
 
 ## 🔗 Links Úteis
@@ -378,16 +382,15 @@ Planejamos adicionar nas próximas versões:
 - Suporte a temas customizados
 - Documentação expandida
 
-
 ### 🙏 Agradecimentos
 
 Agradecemos à equipe do Design System Gov.BR por criar e manter o design system oficial do governo federal brasileiro.
 
-
 ### 📧 Feedback
 
-Encontrou algum problema ou tem sugestões? Abra uma [issue](vscode-file://vscode-app/c:/Users/2080882/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html) ou contribua com um pull request!
+Encontrou algum problema ou tem sugestões?
+Abra uma [issue](https://github.com/kelsoncm/django-admintheme-dsgovbr/issues) ou contribua com um pull request!
 
 ---
 
-**Desenvolvido com ❤️ para o ecossistema Gov.BR**
+> Desenvolvido com ❤️ para o ecossistema Gov.BR

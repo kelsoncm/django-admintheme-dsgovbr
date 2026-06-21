@@ -8,64 +8,155 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Categoria',
+            name="Categoria",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=100, verbose_name='Nome da Categoria')),
-                ('slug', models.SlugField(max_length=100, unique=True, verbose_name='Slug')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(max_length=100, verbose_name="Nome da Categoria"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(max_length=100, unique=True, verbose_name="Slug"),
+                ),
             ],
             options={
-                'verbose_name': 'Categoria',
-                'verbose_name_plural': 'Categorias',
+                "verbose_name": "Categoria",
+                "verbose_name_plural": "Categorias",
             },
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=50, unique=True, verbose_name='Nome da Tag')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(
+                        max_length=50, unique=True, verbose_name="Nome da Tag"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tag',
-                'verbose_name_plural': 'Tags',
+                "verbose_name": "Tag",
+                "verbose_name_plural": "Tags",
             },
         ),
         migrations.CreateModel(
-            name='Noticia',
+            name="Noticia",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200, verbose_name='Título')),
-                ('slug', models.SlugField(max_length=200, unique=True, verbose_name='Slug')),
-                ('conteudo', models.TextField(verbose_name='Conteúdo')),
-                ('status', models.CharField(choices=[('rascunho', 'Rascunho'), ('publicado', 'Publicado'), ('arquivado', 'Arquivado')], default='rascunho', max_length=15, verbose_name='Status')),
-                ('data_publicacao', models.DateTimeField(blank=True, null=True, verbose_name='Data de Publicação')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
-                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='editorial.categoria', verbose_name='Categoria')),
-                ('tags', models.ManyToManyField(blank=True, to='editorial.tag', verbose_name='Tags')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200, verbose_name="Título")),
+                (
+                    "slug",
+                    models.SlugField(max_length=200, unique=True, verbose_name="Slug"),
+                ),
+                ("conteudo", models.TextField(verbose_name="Conteúdo")),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("rascunho", "Rascunho"),
+                            ("publicado", "Publicado"),
+                            ("arquivado", "Arquivado"),
+                        ],
+                        default="rascunho",
+                        max_length=15,
+                        verbose_name="Status",
+                    ),
+                ),
+                (
+                    "data_publicacao",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="Data de Publicação"
+                    ),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Criado em"),
+                ),
+                (
+                    "categoria",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="editorial.categoria",
+                        verbose_name="Categoria",
+                    ),
+                ),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        blank=True, to="editorial.tag", verbose_name="Tags"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Notícia',
-                'verbose_name_plural': 'Notícias',
+                "verbose_name": "Notícia",
+                "verbose_name_plural": "Notícias",
             },
         ),
         migrations.CreateModel(
-            name='Comentario',
+            name="Comentario",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('autor', models.CharField(max_length=100, verbose_name='Autor')),
-                ('comentario', models.TextField(verbose_name='Comentário')),
-                ('aprovado', models.BooleanField(default=True, verbose_name='Aprovado?')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
-                ('noticia', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comentarios', to='editorial.noticia', verbose_name='Notícia')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("autor", models.CharField(max_length=100, verbose_name="Autor")),
+                ("comentario", models.TextField(verbose_name="Comentário")),
+                (
+                    "aprovado",
+                    models.BooleanField(default=True, verbose_name="Aprovado?"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Criado em"),
+                ),
+                (
+                    "noticia",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comentarios",
+                        to="editorial.noticia",
+                        verbose_name="Notícia",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Comentário de Notícia',
-                'verbose_name_plural': 'Comentários de Notícias',
+                "verbose_name": "Comentário de Notícia",
+                "verbose_name_plural": "Comentários de Notícias",
             },
         ),
     ]

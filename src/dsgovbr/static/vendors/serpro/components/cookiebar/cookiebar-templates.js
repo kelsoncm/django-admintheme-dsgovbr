@@ -417,7 +417,7 @@ export class CookiebarTemplates {
               <input
                 id="check-all"
                 name="check-all"
-                type="checkbox"                
+                type="checkbox"
                 aria-label="${this.labels.setCheckAllLabel()}"
                 ${this.data.selectAll ? 'checked' : ''}
                 ${this.data.allIndeterminated ? 'indeterminate' : ''}
@@ -443,7 +443,7 @@ export class CookiebarTemplates {
               <input
                 id="${`check-group-${groupIndex}`}"
                 name="${`check-group-${groupIndex}`}"
-                type="checkbox"                
+                type="checkbox"
                 aria-label="${this.labels.setCheckGroupLabel(groupData)}"
                 ${groupData.groupSelected ? 'checked' : ''}
                 ${groupData.groupIndeterminated ? 'indeterminate' : ''}

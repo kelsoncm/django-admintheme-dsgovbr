@@ -4,12 +4,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('core.urls', namespace='core')),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('forms/', include('public_forms.urls', namespace='public_forms')),
-    path('showcase/', include('ui_showcase.urls', namespace='ui_showcase')),
-    path('qa/', include('qa_orchestrator.urls', namespace='qa_orchestrator')),
+    path("", include("core.urls", namespace="core")),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("forms/", include("public_forms.urls", namespace="public_forms")),
+    path("showcase/", include("ui_showcase.urls", namespace="ui_showcase")),
+    path("qa/", include("qa_orchestrator.urls", namespace="qa_orchestrator")),
 ]
 
 if settings.DEBUG:

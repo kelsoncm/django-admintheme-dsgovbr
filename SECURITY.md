@@ -6,8 +6,8 @@ As seguintes versões do `django-dsgovbr` recebem correções de segurança ativ
 
 | Versão   | Suportada |
 |----------|-----------|
-| 5.2.x    | ✅ Sim   |
-| <= 5.1.x | ❌ Não   |
+| 5.2.x    | Sim       |
+| <= 5.1.x | Não       |
 
 > **Recomendação:** utilize sempre a versão mais recente publicada no [PyPI](https://pypi.org/project/django-dsgovbr/).
 
@@ -15,7 +15,9 @@ As seguintes versões do `django-dsgovbr` recebem correções de segurança ativ
 
 ## Escopo de segurança
 
-Este pacote é um **tema para o Django Admin** baseado no [Design System do Governo Federal (DS Gov.br)](https://www.gov.br/ds/home). Por ser essencialmente um conjunto de templates HTML, arquivos SASS/CSS e JavaScript, a superfície de ataque é limitada, mas não inexistente.
+Este pacote é um **tema para o Django Admin** baseado no
+[Design System do Governo Federal (DS Gov.br)](https://www.gov.br/ds/home). Por ser essencialmente um conjunto de
+templates HTML, arquivos SASS/CSS e JavaScript, a superfície de ataque é limitada, mas não inexistente.
 
 Vulnerabilidades consideradas **dentro do escopo**:
 
@@ -35,15 +37,12 @@ Vulnerabilidades **fora do escopo**:
 
 ## Como reportar uma vulnerabilidade
 
-**Não abra uma issue pública** para reportar vulnerabilidades de segurança — isso expõe os usuários antes que uma correção esteja disponível.
+**Não abra uma issue pública** para reportar vulnerabilidades de segurança — isso expõe os usuários antes que uma
+correção esteja disponível.
 
 ### Canal preferencial
 
-Envie um e-mail para **kelsoncm@gmail.com** com o assunto:
-
-```
-[SECURITY] django-dsgovbr - <descrição curta>
-```
+Envie um e-mail para **<kelsoncm@gmail.com>** com o assunto: `[SECURITY] django-dsgovbr - <descrição curta>`.
 
 ### Informações que devem constar no reporte
 
@@ -64,7 +63,8 @@ Por favor, inclua:
 | Avaliação inicial da severidade    | 7 dias úteis   |
 | Divulgação coordenada / patch      | 30–90 dias     |
 
-Reportes de boa-fé serão tratados com respeito e confidencialidade. O nome do pesquisador poderá ser incluído nos agradecimentos do release, caso desejado.
+Reportes de boa-fé serão tratados com respeito e confidencialidade. O nome do pesquisador poderá ser incluído nos
+agradecimentos do release, caso desejado.
 
 ***
 
@@ -85,21 +85,23 @@ Este projeto adota o modelo de **Divulgação Coordenada de Vulnerabilidades (CV
 
 Este pacote depende de:
 
-| Dependência            | Versão mínima | Canal de reporte de segurança                                              |
-|------------------------|---------------|----------------------------------------------------------------------------|
-| `django`               | ≥ 4.2         | [Django Security](https://www.djangoproject.com/security/)                 |
-| `django-compressor`    | ≥ 4.4         | [GitHub Issues](https://github.com/django-compressor/django-compressor)    |
-| `django-libsass`       | ≥ 0.9         | [GitHub Issues](https://github.com/torchbox/django-libsass)                |
-| `libsass`              | ≥ 0.23.0      | [GitHub Issues](https://github.com/sass/libsass-python)                    |
+| Dependência         | Versão mínima | Canal de reporte de segurança                            |
+|---------------------|---------------|----------------------------------------------------------|
+| `django`            | ≥ 5.2         | <https://www.djangoproject.com/security/>                |
+| `django-compressor` | ≥ 4.4         | <https://github.com/django-compressor/django-compressor> |
+| `django-libsass`    | ≥ 0.9         | <https://github.com/torchbox/django-libsass>             |
+| `libsass`           | ≥ 0.23.0      | <https://github.com/sass/libsass-python>                 |
 
-Recomenda-se o uso de ferramentas como [`pip-audit`](https://pypi.org/project/pip-audit/) ou [Dependabot](https://docs.github.com/en/code-security/dependabot) para monitorar CVEs nas dependências.
+Recomenda-se o uso de ferramentas como [`pip-audit`](https://pypi.org/project/pip-audit/) ou
+[Dependabot](https://docs.github.com/en/code-security/dependabot) para monitorar CVEs nas dependências.
 
 ***
 
 ## Boas práticas para quem usa este pacote
 
 - Mantenha o pacote atualizado (`pip install --upgrade django-dsgovbr`)
-- Habilite o [Django Security Middleware](https://docs.djangoproject.com/en/stable/ref/middleware/#security-middleware) (`SecurityMiddleware`)
+- Habilite o [Django Security Middleware](https://docs.djangoproject.com/en/stable/ref/middleware/#security-middleware)
+  (`SecurityMiddleware`)
 - Configure uma **Content Security Policy (CSP)** rigorosa usando [`django-csp`](https://django-csp.readthedocs.io/)
 - Restrinja o acesso ao Django Admin a redes internas ou via VPN
 - Utilize HTTPS em produção e configure `SECURE_HSTS_SECONDS` adequadamente

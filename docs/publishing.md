@@ -8,9 +8,9 @@ Este documento descreve como publicar o pacote `django-dsgovbr` no PyPI usando G
 
 O workflow usa o método de "Trusted Publishing" do PyPI, que é mais seguro que usar tokens.
 
-#### Para PyPI (produção):
+#### Para PyPI (produção)
 
-1. Acesse https://pypi.org/manage/account/publishing/
+1. Acesse <https://pypi.org/manage/account/publishing/>
 2. Clique em "Add a new pending publisher"
 3. Preencha:
    - **PyPI Project Name**: `django-dsgovbr`
@@ -20,9 +20,9 @@ O workflow usa o método de "Trusted Publishing" do PyPI, que é mais seguro que
    - **Environment name**: `pypi`
 4. Clique em "Add"
 
-#### Para TestPyPI (testes):
+#### Para TestPyPI (testes)
 
-1. Acesse https://test.pypi.org/manage/account/publishing/
+1. Acesse <https://test.pypi.org/manage/account/publishing/>
 2. Siga os mesmos passos acima, mas com:
    - **Environment name**: `testpypi`
 
@@ -44,10 +44,12 @@ A forma recomendada é criar uma release no GitHub:
 1. Atualize a versão no arquivo `pyproject.toml`
 2. Commit e push das mudanças
 3. Crie uma tag de versão:
+
    ```bash
    git tag v0.1.0
    git push origin v0.1.0
    ```
+
 4. Vá para GitHub → Releases → "Create a new release"
 5. Selecione a tag criada
 6. Preencha as informações da release
@@ -62,7 +64,7 @@ Para testar no TestPyPI ou forçar uma publicação manual:
 1. Vá para Actions → "Publish to PyPI" → "Run workflow"
 2. Selecione:
    - **Branch**: main (ou a branch desejada)
-   - **Deploy target**: 
+   - **Deploy target**:
      - `testpypi` - para testar no Test PyPI
      - `pypi` - para publicar no PyPI oficial
 3. Clique em "Run workflow"
@@ -105,7 +107,7 @@ Use [Semantic Versioning](https://semver.org/):
 
 ## Estrutura de Arquivos
 
-```
+```text
 django_dsgovbr/
 ├── .github/
 │   ├── workflows/
@@ -123,13 +125,17 @@ django_dsgovbr/
 ## Solução de Problemas
 
 ### Erro: "Project name already exists"
+
 O nome já está em uso no PyPI. Escolha outro nome ou contate o proprietário.
 
 ### Erro: "Trusted publishing not configured"
+
 Configure o Trusted Publishing no PyPI seguindo a seção "Configuração Inicial".
 
 ### Erro no build
+
 Verifique:
+
 - `MANIFEST.in` inclui todos os arquivos necessários
 - `pyproject.toml` está correto
 - Não há erros de sintaxe no código

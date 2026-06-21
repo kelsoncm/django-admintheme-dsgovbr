@@ -33,7 +33,7 @@ window.dsgovbrAdminActionsTogglerInit = function() {
             } else {
                 actionCounter.textContent = '';
                 selectedBar.style.display = 'none';
-            } 
+            }
         }
     }
 
@@ -67,7 +67,7 @@ window.dsgovbrAdminActionsTogglerInit = function() {
 };
 
 window.dsgovbrAdminActionsRunnerInit = function() {
-    
+
     // Actions da selected-bar
     var actionButtons = document.querySelectorAll('.selected-bar .action-select-btn');
     actionButtons.forEach(function(btn) {

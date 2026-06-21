@@ -41,7 +41,7 @@
         <p>Usuário Atual: <strong>{{ current_user.username|default:"Anônimo" }}</strong></p>
         <p>Superusuário: {{ current_user.is_superuser|yesno:"Sim,Não" }} | Membro de Staff: {{ current_user.is_staff|yesno:"Sim,Não" }}</p>
         {% if current_user.is_authenticated %}
-          <p>Grupos: 
+          <p>Grupos:
             {% for g in current_user.groups.all %}
               <span class="br-tag info">{{ g.name }}</span>
             {% empty %}

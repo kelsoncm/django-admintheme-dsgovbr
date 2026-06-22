@@ -19,13 +19,14 @@ Setup para Desenvolvimento
    cd django-dsgovbr
 
    # Crie um ambiente virtual
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   # ou
-   venv\Scripts\activate  # Windows
+   python -m venv .venv
+   source ./venv/bin/activate  # Linux/Mac
+   .\venv\Scripts\activate  # Windows
 
    # Instale as dependências de desenvolvimento
    pip install -e ".[dev]"
+
+   pre-commit install --hook-type pre-push --hook-type pre-commit
 
    # Execute os testes
    python -m pytest

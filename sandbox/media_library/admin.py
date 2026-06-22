@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dsgovbr.admin import DSGovBrModelAdmin
+from dsgovbr.admin.import_export import DSGovBrModelAdmin
 from .models import Midia
 
 

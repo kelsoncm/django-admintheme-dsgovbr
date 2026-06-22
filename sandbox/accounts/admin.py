@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from dsgovbr.admin import DSGovBrModelAdmin
+from dsgovbr.admin.import_export import DSGovBrModelAdmin
 from .models import CustomUser
 
 

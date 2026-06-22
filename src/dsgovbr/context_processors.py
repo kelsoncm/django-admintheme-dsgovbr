@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import HttpRequest
 from django.contrib import admin
 from django.urls import reverse
+from django.utils import timezone
 
 
 def _get_element_as_list(dictionary: dict, name: str) -> list:
@@ -21,10 +22,10 @@ def layout_settings(request: HttpRequest) -> dict:
         "project_subtitle": project_subtitle,
         "project_version": getattr(settings, "PROJECT_VERSION", "v1.0.0"),
         "project_last_startup": getattr(
-            settings, "PROJECT_LAST_STARTUP", "PROJECT_LAST_STARTUP"
+            settings, "PROJECT_LAST_STARTUP", str(timezone.now())
         ),
         "project_copyright": getattr(
-            settings, "PROJECT_COPYRIGHT", "@2025 PROJECT_COPYRIGHT"
+            settings, "PROJECT_COPYRIGHT", "@2025 Nome do projeto"
         ),
         "project_license": getattr(settings, "PROJECT_LICENSE", "Licença MIT"),
         "project_license_url": getattr(

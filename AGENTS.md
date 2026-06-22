@@ -13,4 +13,4 @@
   lógica), style: estilo ou formatação de código (sem impacto em lógica), test: testes, doc: documentação no código
   ou do repositório, env: CI/CD ou settings, build: build ou dependências.
 
-agente fez busca. agente fez autocomplete. sandbox funciona. tudo testado.
+agente tirou python 3.10. agente tirou checagem de manifesto e pacote no teste.

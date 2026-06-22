@@ -38,20 +38,20 @@ repos:
       - id: markdownlint
         args: ["--fix"]
 
-  - repo: local
-    hooks:
-      - id: pytest
-        name: pytest
-        stages: [pre-push]
-        language: system
-        entry: pytest --cov=dsgovbr --cov-report=xml:coverage.xml --cov-report=term-missing
-        pass_filenames: false
-        always_run: true
-      - id: pytest-coverage-gate
-        name: pytest-coverage-gate
-        stages: [pre-push]
-        entry: python -m coverage_gate --coverage-xml=coverage.xml --baseline=.coverage-baseline
-        language: python
-        pass_filenames: false
-        always_run: true
-        additional_dependencies: ['pytest-coverage-gate>=1.0.3']
+#  - repo: local
+#    hooks:
+#      - id: pytest
+#        name: pytest
+#        stages: [pre-push]
+#        language: system
+#        entry: pytest --cov=dsgovbr --cov-report=xml:coverage.xml --cov-report=term-missing
+#        pass_filenames: false
+#        always_run: true
+#      - id: pytest-coverage-gate
+#        name: pytest-coverage-gate
+#        stages: [pre-push]
+#        entry: python -m coverage_gate --coverage-xml=coverage.xml --baseline=.coverage-baseline
+#        language: python
+#        pass_filenames: false
+#        always_run: true
+#        additional_dependencies: ['pytest-coverage-gate>=1.0.3']

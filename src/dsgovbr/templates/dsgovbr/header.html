@@ -163,17 +163,21 @@
           </div>
         </div>
         {% if dsgovbr.header.search.show %}
-          <div class="header-search" id="main-searchbox">
+          <form action="{{ dsgovbr.header.search.url }}" method="get" class="header-search" id="main-searchbox">
             <div class="br-input has-icon">
               <label for="searchbox">Texto da pesquisa</label>
-              <input id="searchbox" type="text" placeholder="O que você procura?">
-              <button class="br-button circle small" type="button" aria-label="Pesquisar"><i class="fas fa-search" aria-hidden="true"></i>
+              <input id="searchbox" name="q" type="text" placeholder="O que você procura?" autocomplete="off"
+                     {% if dsgovbr.header.search.autocomplete.show %}data-autocomplete-url="{{ dsgovbr.header.search.autocomplete.url }}"{% endif %}>
+              <button class="br-button circle small" type="submit" aria-label="Pesquisar"><i class="fas fa-search" aria-hidden="true"></i>
               </button>
             </div>
+            {% if dsgovbr.header.search.autocomplete.show %}
+              <div class="br-list autocomplete-results" id="searchbox-autocomplete-results"></div>
+            {% endif %}
             <button class="br-button circle search-close ml-1" type="button" aria-label="Fechar Busca" data-dismiss="search"><i class="fas fa-times" aria-hidden="true"></i>
             </button>
-          </div>
-        {% endif  %}
+          </form>
+        {% endif %}
       </div>
     </div>
   </header>

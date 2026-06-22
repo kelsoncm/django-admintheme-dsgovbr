@@ -44,7 +44,7 @@
           <span aria-hidden="true">(2/4)</span>
           <span aria-hidden="true" class="br-tag text ml-1">2</span>
         </a>
-        {% if show_searchbox %}
+        {% if dsgovbr.header.search.show %}
           <a class="br-item" href="#main-searchbox" role="menuitem" accesskey="3">
             Ir para a busca
             <span aria-hidden="true">(3/4)</span>
@@ -208,6 +208,9 @@
   <script src="https://unpkg.com/@popperjs/core@2" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr" type="text/javascript"></script>
   <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js" type="text/javascript"></script>
+  {% if dsgovbr.header.search.autocomplete.show %}
+    <script src="{% static 'dsgovbr/js/searchbox.js' %}" type="text/javascript"></script>
+  {% endif %}
   {% block extrabody %}{% endblock extrabody %}
 </body>
 

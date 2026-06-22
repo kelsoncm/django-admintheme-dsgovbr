@@ -165,6 +165,14 @@ DSGOVBR_HEADER = {
             },
         ],
     },
+    "search": {
+        "ativo": True,
+        "view_name": "site_search",
+        "autocomplete": {
+            "ativo": True,
+            "view_name": "site_index_autocomplete",
+        },
+    },
     # "login": {
     #     "show": True,
     #     "type": "fotografico",

@@ -175,5 +175,6 @@ def layout_settings(request: HttpRequest) -> dict:
         ),
         "hostname": getattr(settings, "HOSTNAME", "HOSTNAME"),
         "admin_app_list": site_admin_atual.get_app_list(request),
+        "available_apps": site_admin_atual.get_app_list(request),
         "dsgovbr": dsgovbr_dict,
     }

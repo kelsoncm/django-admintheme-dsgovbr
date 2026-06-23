@@ -371,18 +371,11 @@ class DSGovBrAdminSite(AdminSite):
 
     def get_app_list(self, request, app_label=None):
         """
-        Injeta e modifica a variável app_list antes de enviá-la para o template.
+        Retorna a lista de menus unificada e customizada.
         """
-        # Obtém a lista padrão gerada pelo Django
-        app_list = super().get_app_list(request, app_label)
+        from dsgovbr.menus import get_menu_list
 
-        # Exemplo de customização: Ordenar os apps de Z a A
-        app_list.sort(key=lambda x: x["name"], reverse=True)
-
-        # Exemplo de filtragem: Esconder um app específico (ex: 'auth') para usuários comuns
-        if not request.user.is_superuser:
-            app_list = [app for app in app_list if app["app_label"] != "auth"]
-
-        print("app_list", app_list)
-
-        return app_list
+        menu_list = get_menu_list(request)
+        if app_label:
+            return [app for app in menu_list if app["app_label"] == app_label]
+        return menu_list

@@ -14,3 +14,5 @@
   ou do repositório, env: CI/CD ou settings, build: build ou dependências.
 
 agente tirou python 3.10. agente tirou checagem de manifesto e pacote no teste.
+agente unificou menu. agente criou modulo menus.py com autodiscover. agente adicionou ordenacao de menu
+e suportou icones customizados. agente adicionou testes.

@@ -7,6 +7,11 @@ class DSGovBRConfig(AppConfig):
     verbose_name: str = "DSGovBR"
     icon: str = "fa fa-edit"
 
+    def ready(self):
+        from dsgovbr.menus import autodiscover
+
+        autodiscover()
+
 
 class DSGovBrAdminConfig(AdminConfig):
     """

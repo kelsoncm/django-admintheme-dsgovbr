@@ -4,10 +4,8 @@
 
 As seguintes versões do `django-dsgovbr` recebem correções de segurança ativas:
 
-| Versão   | Suportada |
-|----------|-----------|
-| 5.2.x    | Sim       |
-| <= 5.1.x | Não       |
+| 6.0.x    | Sim       |
+| <= 5.2.x | Não       |
 
 > **Recomendação:** utilize sempre a versão mais recente publicada no [PyPI](https://pypi.org/project/django-dsgovbr/).
 
@@ -48,7 +46,7 @@ Envie um e-mail para **<kelsoncm@gmail.com>** com o assunto: `[SECURITY] django-
 
 Por favor, inclua:
 
-1. **Versão afetada** do pacote (ex: `5.2.4`)
+1. **Versão afetada** do pacote (ex: `6.0.0`)
 2. **Ambiente** — versão do Python, versão do Django, sistema operacional
 3. **Descrição detalhada** da vulnerabilidade
 4. **Passos para reproduzir** (PoC mínimo reproduzível)
@@ -87,7 +85,7 @@ Este pacote depende de:
 
 | Dependência         | Versão mínima | Canal de reporte de segurança                            |
 |---------------------|---------------|----------------------------------------------------------|
-| `django`            | ≥ 5.2         | <https://www.djangoproject.com/security/>                |
+| `django`            | ≥ 6.0         | <https://www.djangoproject.com/security/>                |
 | `django-compressor` | ≥ 4.4         | <https://github.com/django-compressor/django-compressor> |
 | `django-libsass`    | ≥ 0.9         | <https://github.com/torchbox/django-libsass>             |
 | `libsass`           | ≥ 0.23.0      | <https://github.com/sass/libsass-python>                 |

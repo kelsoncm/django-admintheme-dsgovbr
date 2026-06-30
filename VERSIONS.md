@@ -1,5 +1,15 @@
 # Histórico de Versões
 
+## 6.0.0
+
+### Compatibilidade com Django 6.0.x
+
+- **Django 6.0**: Atualização da compatibilidade do pacote para suportar Django 6.0.x.
+- **Python >= 3.12**: Elevação da versão mínima suportada do Python para 3.12 (conforme exigido pelo Django 6.0).
+- **CI/CD**: Atualização das matrizes de teste do GitLab CI e GitHub Actions para testar contra o Django 6.0.x e
+  Python 3.12+.
+- **Remoção de Legado**: Descontinuado o suporte oficial para Django 5.2 e versões inferiores, bem como Python 3.10 e 3.11.
+
 ## 5.2.4
 
 ### Refatoração e Expansão dos Templates Administrativos

@@ -12,8 +12,3 @@
   Os tipos são: feat: novas funcionalidades, fix: correção de bugs, refactor: refatoração ou performances (sem impacto em
   lógica), style: estilo ou formatação de código (sem impacto em lógica), test: testes, doc: documentação no código
   ou do repositório, env: CI/CD ou settings, build: build ou dependências.
-
-agente tirou python 3.10. agente tirou checagem de manifesto e pacote no teste.
-agente unificou menu. agente criou modulo menus.py com autodiscover. agente adicionou ordenacao de menu
-e suportou icones customizados. agente adicionou testes.
-agente adicionou django-libsass e libsass no grupo dev em pyproject.toml para corrigir unicodedecodeerror no compressor.

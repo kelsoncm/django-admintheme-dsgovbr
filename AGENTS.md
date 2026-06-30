@@ -16,3 +16,4 @@
 agente tirou python 3.10. agente tirou checagem de manifesto e pacote no teste.
 agente unificou menu. agente criou modulo menus.py com autodiscover. agente adicionou ordenacao de menu
 e suportou icones customizados. agente adicionou testes.
+agente adicionou django-libsass e libsass no grupo dev em pyproject.toml para corrigir unicodedecodeerror no compressor.
